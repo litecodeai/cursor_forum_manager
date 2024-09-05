@@ -64,44 +64,44 @@ $(document).on("click", "#button_generate_forum_post_text", (e) => {
     const topic_categories_text = topic_categories.length > 0 ? topic_categories.join(', ') : "Not Provided";
 
     // add the values to the generated text area
-const generated_text = `** Topic Category ** 
-${topic_categories_text}
-
-** System Info **
-${textarea_system_info}
-
-** Interface **
-${select_interface_options_text}
-
-** Model **
-${select_language_model_options_text}
-
-** Symbols **
-${select_symbols_options_text}
-
-** Submission **
-${select_submission_options_text}
-
-** Console Logs **
-${textarea_logs_console}
-
-** Terminal Logs **
-${textarea_logs_terminal}
-
-** Desired Behaviour **
-${textarea_behaviour_desired}
-
-** Actual Behaviour**
-${textarea_behaviour_actual}
-
-** Steps to Reproduce **
-${textarea_steps_to_reproduce}
-
-
-Please add any screenshots or additional information you think would be helpful.
-
-Ensure you have redacted any sensitive information before posting.
-
+const generated_text = `**Topic Category**   
+${topic_categories_text}  
+  
+**System Info**  
+${textarea_system_info}  
+  
+**Interface**  
+${select_interface_options_text}  
+  
+**Model**  
+${select_language_model_options_text}  
+  
+**Symbols**  
+${select_symbols_options_text}  
+  
+**Submission**    
+${select_submission_options_text}  
+  
+**Console Logs**  
+${textarea_logs_console}  
+  
+**Terminal Logs**  
+${textarea_logs_terminal}  
+  
+**Desired Behaviour**  
+${textarea_behaviour_desired}  
+  
+**Actual Behaviour**  
+${textarea_behaviour_actual}  
+  
+**Steps to Reproduce**  
+${textarea_steps_to_reproduce}  
+  
+  
+Please add any screenshots or additional information you think would be helpful.  
+  
+Ensure you have redacted any sensitive information before posting.  
+  
 `;
 
     $("#textarea-generated-post").val(generated_text);
