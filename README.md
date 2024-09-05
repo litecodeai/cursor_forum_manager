@@ -1,4 +1,4 @@
-This unofficial repository contains the following tools:
+This unofficial repository contains the following, proof of concept, tools:
 
  - Forum Post Helper
   
@@ -18,4 +18,3 @@ Together, these tools assist:
 
 - Forum moderators and Cursor developers in managing issues  
 
-- Communicating issue status to users
