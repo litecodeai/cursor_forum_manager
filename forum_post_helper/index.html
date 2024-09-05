@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursor Forum Post Helper</title>
+    <!-- jQuery -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+      integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <!-- UIkit CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.21.11/css/uikit-core.min.css"
+      integrity="sha512-OYi+hyCKLfC/4vl3fgfsoqtdomch4+mgW7HpJk/vuG6pVpL6NhI71qWNGfUZ7z/HlHgYcnqCZ7DwXZdM7SuDeA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- UIkit JS -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.21.11/js/uikit.min.js"
+      integrity="sha512-RKG4LIgHMJB2rsjdMRLXqLr6MujL+YDU0De9Q2vUFlP1fdHXrk2cQ77d2AnfbWN9Fhnb5RMdWOK35bB+JVvNjQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.21.11/js/uikit-icons.min.js"
+      integrity="sha512-YHShacz2BTwjPYSPO5LyMBXSvD+5bCmA7MfutqCQAKL92ILbfi9Qo8RtS2utXspyLjpeMPu0+arVmdlhUR5Idg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/styles.css" />
+
+    <!-- Custom JS -->
+    <script src="../js/scripts.js"></script>
+
+    <!-- Security Headers -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; img-src 'self'; font-src 'self'; connect-src 'none';">
+</head>
+<body>
+
+<div class="uk-container uk-margin-large-bottom">
+
+    <p class="page-title">Cursor Forum Post Helper</p>
+
+    <p class="page-description">An unofficial tool that generates text that you can add to a <a href="https://forum.cursor.com" target="_blank">Cursor Forum</a> post.</p>
+
+    <p class="page-description">This is a client-side tool, no data is sent to the server.</p>
+
+    <p class="page-description">The official Cursor documentation site is <a href="https://docs.cursor.com/" target="_blank">here</a>.</p>
+
+    <p class="page-description">All fields are optional - add relevant values and click the <code>Generate Text</code> button.</p>
+
+    <form class="uk-form-stacked">
+
+        <!-- System Information -->
+        <div class="uk-margin">
+            <label class="uk-form-label" for="textarea-system-info">System</label>
+            <small class="helper-text">copy and paste from <code>Cursor</code> > <code>Help</code> > <code>About</code></small>
+            <textarea id="textarea-system-info" class="uk-textarea" placeholder="enter system information here..."></textarea>
+        </div>
+
+        <!-- Topic Category -->
+        <div class="uk-margin">
+            <label class="uk-form-label" for="checkbox-topic-category">Category</label>
+            <small class="helper-text">select your topic category/s</small>
+            <div id="checkbox-topic-category" class="checkbox-group">
+                <label id="topic-category-label-bug-report"><input class="uk-checkbox custom-checkbox" type="checkbox" name="topic-category" value="Bug Report"> Bug Report</label>
+                <label id="topic-category-label-feature-request"><input class="uk-checkbox custom-checkbox" type="checkbox" name="topic-category" value="Feature Request"> Feature Request</label>
+            </div>
+        </div>
+
+        <!-- Interface -->
+        <div class="uk-margin">
+            <label class="uk-form-label" for="select-interface-options">Interface</label>
+            <small class="helper-text">select the interface/s your issue relates to</small>
+            <select class="uk-select" id="select-interface-options" multiple>
+                <option value="ctrl-l-chat-normal">Ctrl + L - Chat - Normal</option>
+                <option value="ctrl-l-chat-long-context">Ctrl + L - Chat - Long Context</option>
+                <option value="ctrl-k-generator-editor">Ctrl + K - Generator - In Editor</option>
+                <option value="ctrl-k-generator-terminal">Ctrl + K - Generator - In Terminal</option>
+                <option value="ctrl-i-composer">Ctrl + I - Composer</option>
+            </select>
+        </div>
+
+        <!-- Language Model -->
+        <div class="uk-margin">
+            <label class="uk-form-label" for="select-language-model-options">Model</label>
+            <small class="helper-text">select the model/s your issue relates to</small>
+            <select class="uk-select" id="select-language-model-options" multiple>
+                <optgroup label="normal">
+                    <option value="cursor-small">cursor-small</option>
+                    <option value="gpt-3.5">gpt-3.5</option>
+                    <option value="gpt-4o-mini">gpt-4o-mini</option>
+                    <option value="gpt-4o">gpt-4o</option>
+                    <option value="claude-3.5-sonnet">claude-3.5-sonnet</option>
+                </optgroup>
+                <optgroup label="long context">
+                    <option value="gpt-4o-128k">gpt-4o-128k</option>
+                    <option value="gemini-1.5-flash-500k">gemini-1.5-flash-500k</option>
+                    <option value="claude-3-haiku-200k">claude-3-haiku-200k</option>
+                    <option value="claude-3.5-sonnet-200k">claude-3.5-sonnet-200k</option>
+                </optgroup>
+            </select>
+        </div>
+
+
+        <!-- Symbols -->
+        <div class="uk-margin">
+            <label class="uk-form-label" for="select-symbols-options">Symbols</label>
+            <small class="helper-text">select the <a href="https://docs.cursor.com/context/@-symbols/basic" target="_blank">Symbols</a> your issue relates to</small>
+            <select class="uk-select" id="select-symbols-options" multiple>
+                <option value="symbol-files">@Files</option>
+                <option value="symbol-folders">@Folders</option>
+                <option value="symbol-code">@Code</option>
+                <option value="symbol-docs">@Docs</option>
+                <option value="symbol-git">@Git</option>
+                <option value="symbol-codebase">@Codebase</option>
+                <option value="symbol-web">@Web</option>
+                <option value="symbol-chat">@Chat</option>
+                <option value="symbol-definitions">@Definitions</option>
+            </select>
+        </div>
+
+        <!-- Submission -->
+        <div class="uk-margin">
+            <label class="uk-form-label" for="select-submission-options">Submission</label>
+            <small class="helper-text">select how you are submitting your prompt</small>
+            <select class="uk-select" id="select-submission-options" multiple>
+                <option value="chat-with-context">Chat with context</option>
+                <option value="chat-with-no-context">Chat with no context</option>
+                <option value="chat-with-codebase">Chat with codebase</option>
+            </select>
+        </div>
+
+
+        <!-- Logs - Console -->
+        <div class="uk-margin">
+            <label class="uk-form-label" for="textarea-logs-console">Console Logs</label>
+            <small class="helper-text">copy and paste relevant logs from <code>Cursor</code> > <code>Help</code> > <code>Toggle Developer Tools</code> and then click <code>Console</code></small>
+            <textarea id="textarea-logs-console" class="uk-textarea" placeholder="enter console logs here..."></textarea>
+        </div>
+
+        <!-- Logs - Terminal -->
+        <div class="uk-margin">
+            <label class="uk-form-label" for="textarea-logs-terminal">Terminal Logs</label>
+            <small class="helper-text">copy and paste relevant logs from <code>Cursor</code> > <code>Terminal</code> > <code>Output</code> and then select <code>Window</code> or <code>Cursor Tab</code> or <code>Cursor Indexing & Retrieval</code></small>
+            <small class="helper-text">you can also view logs via the command palette (<code>Ctrl</code> + <code>Shift</code> + <code>P</code>) and select <code>Developer: Open Logs Folder</code></small>
+            <textarea id="textarea-logs-terminal" class="uk-textarea" placeholder="enter terminal logs here..."></textarea>
+        </div>
+
+        <!-- Desired Behaviour -->
+        <div class="uk-margin">
+            <label class="uk-form-label" for="textarea-behaviour-desired">Desired Behaviour</label>
+            <small class="helper-text">enter the desired behaviour</small>
+            <textarea id="textarea-behaviour-desired" class="uk-textarea" placeholder="enter desired behaviour here..."></textarea>
+        </div>
+
+        <!-- Actual Behaviour -->
+        <div class="uk-margin">
+            <label class="uk-form-label" for="textarea-behaviour-actual">Actual Behaviour</label>
+            <small class="helper-text">enter the actual behaviour</small>
+            <textarea id="textarea-behaviour-actual" class="uk-textarea" placeholder="enter actual behaviour here..."></textarea>
+        </div>
+
+        <!-- Steps to Reproduce -->
+        <div class="uk-margin">
+            <label class="uk-form-label" for="textarea-steps-to-reproduce">Steps to Reproduce</label>
+            <small class="helper-text">enter the steps to reproduce</small>
+            <textarea id="textarea-steps-to-reproduce" class="uk-textarea" placeholder="enter steps to reproduce here..."></textarea>
+        </div>
+
+
+        <button id="button_generate_forum_post_text" class="uk-button uk-width-1-1 uk-button-large uk-button-secondary uk-margin-small-top" type="submit">Generate Text</button>
+
+    </form>
+
+<!-- Generated Forum Post Text Area -->
+<div class="uk-margin-medium-top uk-position-relative">
+    <button id="button_copy_to_clipboard" class="uk-button uk-button-secondary uk-position-top-right">Copy</button>
+    <textarea class="uk-textarea" id="textarea-generated-post" rows="10" placeholder="Your generated forum post text will appear here..."></textarea>
+</div>
+
+
+</div>
+</body>
+</html>

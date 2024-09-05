@@ -1,0 +1,131 @@
+/* select elements */
+
+#select-interface-options {
+    height: 125px;
+    resize: none;
+}
+
+#select-language-model-options {
+    height: 255px;
+    resize: none;
+}
+
+#select-symbols-options {
+    height: 215px;
+    resize: none;
+}
+
+#select-submission-options {
+    height: 85px;
+    resize: none;
+}
+
+option {
+    padding-inline-start: 3px;
+}
+
+
+/* textarea elements */
+
+#textarea-system-info,
+#textarea-logs-console,
+#textarea-logs-terminal,
+#textarea-behaviour-desired,
+#textarea-behaviour-actual,
+#textarea-steps-to-reproduce {
+    height: 135px;
+}
+
+#textarea-generated-post {
+    height: 255px;
+}
+
+
+/* multiple choice select element and textarea */  
+.uk-select[multiple], .uk-select[size], .uk-textarea {
+    border: 1px solid #dbdbdb;
+    border-radius: 5px;
+}
+
+/* paragraphs */
+
+.page-title {
+    margin: 20px 0px 20px 0px;
+    font-size: 24px;
+    background-color: rgb(0 0 0);
+    padding: 20px;
+    border-radius: 5px;
+    color: #eee;
+}
+
+
+/* labels */
+
+.uk-form-stacked .uk-form-label {
+    margin-bottom: 0px;
+    font-weight: 500;
+    font-size: 24px;
+    color: #000;
+    background: #eaeaea;
+    padding: 5px 15px;
+    border-radius: 5px;
+    border: 1px solid #8f8f8f;
+}
+
+.helper-text {
+    display: block;
+    margin: 10px 5px 10px 0px;
+}
+
+
+/* code */
+
+:not(pre)>code, :not(pre)>kbd, :not(pre)>samp {
+    background-color: #eee;
+    padding: 2px 4px;
+    border-radius: 4px;
+    color: #888;
+}
+
+
+/* links */
+
+.uk-link, a {
+    text-decoration: underline;
+}
+
+
+/* buttons */
+
+#button_generate_forum_post_text {
+    border-radius: 5px;
+}
+
+#button_copy_to_clipboard {
+    margin: 20px 30px 0px 0px;
+    border-radius: 5px;
+}
+
+/* checkboxes */
+
+.uk-checkbox:checked, .uk-checkbox:indeterminate, .uk-radio:checked {
+    background-color: #464646 !important;
+}
+
+#topic-category-label-bug-report {
+    margin-right: 20px;
+}
+
+/* notifications */
+
+.uk-notification-message {
+    border: 1px solid #000;
+    display: block !important;
+    border-radius: 5px;
+    color: #000 !important;
+    text-align: center;
+}
+
+.uk-close {
+    color: #000;
+}
