@@ -116,7 +116,7 @@ $(document).ready(function() {
 
 const generate_triage_helper_table_rows = async () => {
     try {
-        const response = await fetch("/data/data.json");
+        const response = await fetch("data/data.json");
         if (!response.ok) {
             throw new Error("Network response was not ok");
         }
