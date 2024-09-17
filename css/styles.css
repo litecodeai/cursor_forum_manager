@@ -90,8 +90,48 @@ option {
 
 /* links */
 
-.uk-link, a {
+.page-description a,
+.helper-text a,
+.triage-helper-related-topic {
     text-decoration: underline;
+}
+
+
+/* switcher tabs */
+
+.uk-switcher > * {
+    margin-top: 25px;
+}
+
+.uk-tab li a {
+    border: 1px solid #000 !important;
+    background: #fff;
+    border-radius: 3px 3px 0px 0px;
+    text-transform: none;
+    color: #000;
+}
+
+.uk-tab li.uk-active a {
+    border: 1px solid #000 !important;
+    background: #eaeaea;
+    border-radius: 3px 3px 0px 0px;
+    text-transform: none;
+}
+
+
+.uk-tab>* {
+    flex: none;
+    padding-left: 10px;
+    position: relative;
+}
+
+.uk-tab>*:first-child {
+    padding-left: 20px;
+}
+
+
+.uk-tab::before {
+    border-bottom: 1px solid #000000 !important;
 }
 
 
@@ -129,3 +169,130 @@ option {
 .uk-close {
     color: #000;
 }
+
+
+/* triage helper table */
+
+/* th, td {
+    border-right: 1px solid #222;
+} */
+
+td {
+    font-size: 14px;
+}
+
+tr.triage-helper-table-header {
+    background-color: #5f5f5f;
+}
+
+tr.triage-helper-table-header th {
+    color: #fff !important;
+}
+
+th.triage-helper-column-category {
+    width: 125px;
+}
+
+th.triage-helper-column-summary {
+    width: 250px;
+}
+
+th.triage-helper-column-operating-system {
+    width: 130px;
+}
+
+th.triage-helper-column-occurrence {
+    width: 100px;
+}
+
+th.triage-helper-column-status {
+    width: 100px;
+}
+
+th.triage-helper-column-priority {
+    width: 100px;
+}
+
+th.triage-helper-column-interface {
+    width: 130px;
+}
+
+th.triage-helper-column-models {
+    width: 160px;
+}
+
+th.triage-helper-column-symbols {
+    width: 160px;
+}
+
+th.triage-helper-column-submission {
+    width: 130px;
+}
+
+th.triage-helper-column-related-topics {
+    width: 130px;
+}
+
+/* ensure the table can exceed the width of its container */
+#triage-helper-table {
+    width: max-content;
+    min-width: 100%;
+}
+
+#triage-helper-table-container {
+    border: 1px solid #000;
+    height: 495px;
+    max-height: 495px;
+}
+
+span.triage-helper-status {
+    padding: 3px 10px;
+    border-radius: 3px;
+    border: 1px solid;
+    text-transform: lowercase;
+}
+
+span.triage-helper-status-received {
+    background: lightgrey;
+    border-color: #333;
+    color: #333;
+}
+
+span.triage-helper-status-acknowledged {
+    background: #fff4c1;
+    border-color: #de8f00;
+    color: #de8f00;
+}
+
+span.triage-helper-status-fixed {
+    background: #c1ffc1;
+    border-color: green;
+    color: green;
+}
+
+
+span.triage-helper-priority {
+    padding: 3px 10px;
+    border-radius: 3px;
+    border: 1px solid;
+    text-transform: lowercase;
+}
+
+span.triage-helper-priority-pending {
+    background: lightgrey;
+    border-color: #333;
+    color: #333;
+}
+
+span.triage-helper-priority-normal {
+    background: #c1ffc1;
+    border-color: green;
+    color: green;
+}
+
+span.triage-helper-priority-high {
+    background: #ffc1c1;
+    border-color: red;
+    color: red;
+}
+

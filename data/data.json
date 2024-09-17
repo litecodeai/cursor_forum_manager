@@ -1,0 +1,347 @@
+[
+    {
+        "id": 1,
+        "category": "Bug Report",
+        "summary": "Apply doesn't work",
+        "operating_system": "Windows",
+        "occurrence": "< 10",
+        "status": {
+            "text": "Acknowledged",
+            "class": "triage-helper-status-acknowledged"
+        },
+        "priority": {
+            "text": "Normal",   
+            "class": "triage-helper-priority-normal"
+        },
+        "interface": "<code>L</code>",
+        "models": "cursor-small",
+        "symbols": "@Files, @Code",
+        "submission": {
+            "text": "Chat with context",
+            "class": "triage-helper-submission-with-context"
+        },
+        "related_topics": "6633, 6074"
+    },
+    {
+        "id": 2,
+        "category": "Feature Request",
+        "summary": "Add dark mode",
+        "operating_system": "macOS",
+        "occurrence": "> 100",
+        "status": {
+            "text": "Received",
+            "class": "triage-helper-status-received"
+        },
+        "priority": {
+            "text": "High",   
+            "class": "triage-helper-priority-high"
+        },
+        "interface": "<code>I</code>",
+        "models": "gpt-3.5",
+        "symbols": "@Definitions, @Chat",
+        "submission": {
+            "text": "Chat with no context",
+            "class": "triage-helper-submission-without-context"
+        },
+        "related_topics": "1234, 5678"
+    },
+    {
+        "id": 3,
+        "category": "Bug Report",
+        "summary": "Crash on startup",
+        "operating_system": "Linux",
+        "occurrence": "< 10",
+        "status": {
+            "text": "Fixed",
+            "class": "triage-helper-status-fixed"
+        },
+        "priority": {
+            "text": "High",   
+            "class": "triage-helper-priority-high"
+        },
+        "interface": "<code>L</code>, <code>K</code>",
+        "models": "gpt-4o-mini",
+        "symbols": "@Codebase, @Git",
+        "submission": {
+            "text": "Chat with codebase",
+            "class": "triage-helper-submission-with-codebase"
+        },
+        "related_topics": "2345, 6789"
+    },
+    {
+        "id": 4,
+        "category": "Feature Request",
+        "summary": "Support for new language",
+        "operating_system": "Windows",
+        "occurrence": "< 100",
+        "status": {
+            "text": "Acknowledged",
+            "class": "triage-helper-status-acknowledged"
+        },
+        "priority": {
+            "text": "Normal",   
+            "class": "triage-helper-priority-normal"
+        },
+        "interface": "<code>I</code>",
+        "models": "gpt-4o",
+        "symbols": "@Definitions, @Docs",
+        "submission": {
+            "text": "Chat with context",
+            "class": "triage-helper-submission-with-context"
+        },
+        "related_topics": "3456, 7890"
+    },
+    {
+        "id": 5,
+        "category": "Bug Report",
+        "summary": "UI elements overlap",
+        "operating_system": "macOS",
+        "occurrence": "< 50",
+        "status": {
+            "text": "Received",
+            "class": "triage-helper-status-received"
+        },
+        "priority": {
+            "text": "Normal",   
+            "class": "triage-helper-priority-normal"
+        },
+        "interface": "<code>I</code>",
+        "models": "claude-3.5-sonnet",
+        "symbols": "@Web",
+        "submission": {
+            "text": "Chat with no context",
+            "class": "triage-helper-submission-without-context"
+        },
+        "related_topics": "4567, 8901"
+    },
+    {
+        "id": 6,
+        "category": "Feature Request",
+        "summary": "Add export to PDF",
+        "operating_system": "Linux",
+        "occurrence": "< 100",
+        "status": {
+            "text": "Acknowledged",
+            "class": "triage-helper-status-acknowledged"
+        },
+        "priority": {
+            "text": "High",   
+            "class": "triage-helper-priority-high"
+        },
+        "interface": "<code>I</code>",
+        "models": "gpt-4o-128k",
+        "symbols": "@Docs, @Files",
+        "submission": {
+            "text": "Chat with codebase",
+            "class": "triage-helper-submission-with-codebase"
+        },
+        "related_topics": "5678, 9012"
+    },
+    {
+        "id": 7,
+        "category": "Bug Report",
+        "summary": "Slow performance",
+        "operating_system": "Windows",
+        "occurrence": "< 50",
+        "status": {
+            "text": "Fixed",
+            "class": "triage-helper-status-fixed"
+        },
+        "priority": {
+            "text": "Normal",   
+            "class": "triage-helper-priority-normal"
+        },
+        "interface": "<code>L</code>, <code>K</code>",
+        "models": "gemini-1.5-flash-500k",
+        "symbols": "@Code",
+        "submission": {
+            "text": "Chat with context",
+            "class": "triage-helper-submission-with-context"
+        },
+        "related_topics": "6789, 0123"
+    },
+    {
+        "id": 8,
+        "category": "Feature Request",
+        "summary": "Add multi-user support",
+        "operating_system": "macOS",
+        "occurrence": "< 100",
+        "status": {
+            "text": "Received",
+            "class": "triage-helper-status-received"
+        },
+        "priority": {
+            "text": "High",   
+            "class": "triage-helper-priority-high"
+        },
+        "interface": "<code>I</code>",
+        "models": "claude-3-haiku-200k",
+        "symbols": "@Chat",
+        "submission": {
+            "text": "Chat with no context",
+            "class": "triage-helper-submission-without-context"
+        },
+        "related_topics": "7890, 1234"
+    },
+    {
+        "id": 9,
+        "category": "Bug Report",
+        "summary": "Memory leak",
+        "operating_system": "Linux",
+        "occurrence": "< 10",
+        "status": {
+            "text": "Acknowledged",
+            "class": "triage-helper-status-acknowledged"
+        },
+        "priority": {
+            "text": "High",   
+            "class": "triage-helper-priority-high"
+        },
+        "interface": "<code>L</code>, <code>K</code>",
+        "models": "claude-3.5-sonnet-200k",
+        "symbols": "@Codebase",
+        "submission": {
+            "text": "Chat with codebase",
+            "class": "triage-helper-submission-with-codebase"
+        },
+        "related_topics": "8901, 2345"
+    },
+    {
+        "id": 10,
+        "category": "Feature Request",
+        "summary": "Add voice commands",
+        "operating_system": "Windows",
+        "occurrence": "> 100",
+        "status": {
+            "text": "Received",
+            "class": "triage-helper-status-received"
+        },
+        "priority": {
+            "text": "Normal",   
+            "class": "triage-helper-priority-normal"
+        },
+        "interface": "<code>I</code>",
+        "models": "cursor-small",
+        "symbols": "@Chat",
+        "submission": {
+            "text": "Chat with context",
+            "class": "triage-helper-submission-with-context"
+        },
+        "related_topics": "9012, 3456"
+    },
+    {
+        "id": 11,
+        "category": "Bug Report",
+        "summary": "Incorrect data display",
+        "operating_system": "macOS",
+        "occurrence": "< 50",
+        "status": {
+            "text": "Fixed",
+            "class": "triage-helper-status-fixed"
+        },
+        "priority": {
+            "text": "Normal",   
+            "class": "triage-helper-priority-normal"
+        },
+        "interface": "<code>I</code>",
+        "models": "gpt-3.5",
+        "symbols": "@Files",
+        "submission": {
+            "text": "Chat with no context",
+            "class": "triage-helper-submission-without-context"
+        },
+        "related_topics": "0123, 4567"
+    },
+    {
+        "id": 12,
+        "category": "Feature Request",
+        "summary": "Add custom themes",
+        "operating_system": "Linux",
+        "occurrence": "> 100",
+        "status": {
+            "text": "Acknowledged",
+            "class": "triage-helper-status-acknowledged"
+        },
+        "priority": {
+            "text": "High",   
+            "class": "triage-helper-priority-high"
+        },
+        "interface": "<code>I</code>",
+        "models": "gpt-4o-mini",
+        "symbols": "@Definitions",
+        "submission": {
+            "text": "Chat with codebase",
+            "class": "triage-helper-submission-with-codebase"
+        },
+        "related_topics": "1234, 5678"
+    },
+    {
+        "id": 13,
+        "category": "Bug Report",
+        "summary": "UI not responsive",
+        "operating_system": "Windows",
+        "occurrence": "< 50",
+        "status": {
+            "text": "Received",
+            "class": "triage-helper-status-received"
+        },
+        "priority": {
+            "text": "Normal",   
+            "class": "triage-helper-priority-normal"
+        },
+        "interface": "<code>I</code>",
+        "models": "gpt-4o",
+        "symbols": "@Web",
+        "submission": {
+            "text": "Chat with context",
+            "class": "triage-helper-submission-with-context"
+        },
+        "related_topics": "2345, 6789"
+    },
+    {
+        "id": 14,
+        "category": "Feature Request",
+        "summary": "Add offline mode",
+        "operating_system": "macOS",
+        "occurrence": "> 100",
+        "status": {
+            "text": "Acknowledged",
+            "class": "triage-helper-status-acknowledged"
+        },
+        "priority": {
+            "text": "High",   
+            "class": "triage-helper-priority-high"
+        },
+        "interface": "<code>I</code>",
+        "models": "claude-3.5-sonnet",
+        "symbols": "@Docs",
+        "submission": {
+            "text": "Chat with no context",
+            "class": "triage-helper-submission-without-context"
+        },
+        "related_topics": "3456, 7890"
+    },
+    {
+        "id": 15,
+        "category": "Bug Report",
+        "summary": "Error saving file",
+        "operating_system": "Linux",
+        "occurrence": "< 50",
+        "status": {
+            "text": "Fixed",
+            "class": "triage-helper-status-fixed"
+        },
+        "priority": {
+            "text": "Normal",   
+            "class": "triage-helper-priority-normal"
+        },
+        "interface": "<code>L</code>, <code>K</code>",
+        "models": "gpt-4o-128k",
+        "symbols": "@Files, @Git",
+        "submission": {
+            "text": "Chat with codebase",
+            "class": "triage-helper-submission-with-codebase"
+        },
+        "related_topics": "4567, 8901"
+    }
+]

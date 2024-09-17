@@ -107,3 +107,49 @@ Ensure you have redacted any sensitive information before posting.
     $("#textarea-generated-post").val(generated_text);
 
 });
+
+$(document).ready(function() {
+    console.log("ready");
+    generate_triage_helper_table_rows();
+});
+
+
+const generate_triage_helper_table_rows = async () => {
+    try {
+        const response = await fetch("../data/data.json");
+        if (!response.ok) {
+            throw new Error("Network response was not ok");
+        }
+        const data = await response.json();
+        console.log(data);
+
+        const $table = $("#triage-helper-table"); // select the table
+        const $table_body = $table.find("tbody"); // select the table body
+
+        data.forEach(item => {
+            console.log(item);
+            const $tr = $("<tr>");
+            $tr.append($("<td>").text(item.id));
+            $tr.append($("<td>").text(item.category));
+            $tr.append($("<td>").text(item.summary));
+            $tr.append($("<td>").text(item.operating_system));
+            $tr.append($("<td>").text(item.occurrence));
+            $tr.append($("<td>").html(`<span class="triage-helper-status ${item.status.class}">${item.status.text}</span>`));
+            $tr.append($("<td>").html(`<span class="triage-helper-priority ${item.priority.class}">${item.priority.text}</span>`));
+            $tr.append($("<td>").html(item.interface));
+            $tr.append($("<td>").text(item.models));
+            $tr.append($("<td>").text(item.symbols));
+            $tr.append($("<td>").html(`<span class="triage-helper-submission ${item.submission.class}">${item.submission.text}</span>`));
+
+            // wrap related topics in <a> tags
+            const related_topics_links = item.related_topics.split(', ').map(topic_id => {
+                return `<a class="triage-helper-related-topic" href="https://forum.cursor.com/t/${topic_id}" target="_blank">${topic_id}</a>`;
+            }).join(', ');
+            $tr.append($("<td>").html(related_topics_links));
+
+            $table_body.append($tr);
+        });
+    } catch (error) {
+        console.error("Failed to fetch data: ", error);
+    }
+}
