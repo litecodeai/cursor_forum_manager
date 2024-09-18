@@ -122,13 +122,13 @@ $(document).on('click', '.playlist-item', (event) => {
 $(document).on('change', '#playlist', (event) => {  
     const $this = $(event.currentTarget);
     const selected_playlist = $this.val();
-    console.log(`selected_playlist is:  ${selected_playlist}`);
+    //console.log(`selected_playlist is:  ${selected_playlist}`);
     load_playlist(selected_playlist);
 });
 
 
 $(document).ready(function() {
-    console.log("ready");
+    //console.log("ready");
     generate_triage_helper_table_rows();
     instantiate_media_player();
 });
@@ -218,7 +218,7 @@ const instantiate_media_player = async () => {
 
 const load_playlist = (playlist_name) => {
 
-    console.log(`loading playlist: ${playlist_name}`);
+    //console.log(`loading playlist: ${playlist_name}`);
 
     if (!media_player_playlists) {
       console.error("Media player playlists not loaded. Load playlist aborted.");
@@ -258,7 +258,7 @@ const load_playlist = (playlist_name) => {
     // load the first video in the selected playlist
     if (selected_playlist.videos.length > 0) {
       const first_video = selected_playlist.videos[0];
-      console.log(`loading first video: ${first_video.video_src}, type: ${first_video.type}`);
+      //console.log(`loading first video: ${first_video.video_src}, type: ${first_video.type}`);
       load_video(first_video.video_src, first_video.type);
     }
 
