@@ -1,0 +1,28 @@
+{
+  "media_player_playlists": [
+{
+  "playlist_name": "Third Party - Cursor Overview",
+  "videos": [
+    {
+    "type": "youtube",
+    "title_line_1": "Dave Ebbelaar",
+    "title_line_2": "Get Started with Cursor",
+    "duration": "24:01", 
+    "video_src": "https://www.youtube.com/embed/CqkZ-ybl3lg?rel=0"
+    }
+  ]
+},
+{
+    "playlist_name": "Third Party - Approaches to AI Coding",
+    "videos": [
+      {
+      "type": "youtube",
+      "title_line_1": "Coding the Future With AI",
+      "title_line_2": "AI Software Development Tips",
+      "duration": "13:23", 
+      "video_src": "https://www.youtube.com/embed/VrHXjvikBrY?rel=0"
+      }
+    ]
+  }
+]
+}

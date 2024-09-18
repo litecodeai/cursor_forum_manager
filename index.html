@@ -37,6 +37,22 @@
       referrerpolicy="no-referrer"
     ></script>
 
+    <!-- video.js -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/video.js/8.18.0/video.min.js"
+      integrity="sha512-2cM++IZSsZkGg265LFdHpphtb/xhV8EhTRhEh70o872NN6Zn+33ThIGM4F3xKal995RN1I1rAwr0PhMUB+ctoA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script> 
+
+    <link 
+    rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/video.js/8.18.0/video-js.min.css" 
+    integrity="sha512-J3tx4ssoARFr4U9VmZmQe2q672q0jUeYizJW3vglkOBTlQ/N6kF3eVqZZzaey/TdIXH69s3HYe2nQwyxK/Emzw==" 
+    crossorigin="anonymous" 
+    referrerpolicy="no-referrer" 
+    />
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/styles.css" />
 
@@ -44,7 +60,7 @@
     <script src="js/scripts.js"></script>
 
     <!-- Security Headers -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; img-src 'self' data:; font-src 'self'; connect-src 'self';">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; img-src 'self' data:; font-src 'self' data:; connect-src 'self'; frame-src 'self' https://www.youtube.com;">
 
 </head>
 <body>
@@ -238,17 +254,24 @@
 
         <!-- Docs -->
         <div>
-            <p class="page-description">The official Cursor docs are at <a href="https://docs.cursor.com" target="_blank">https://docs.cursor.com</a>.</p>
-            <p class="page-description">They are also on GitHub at <a href="https://github.com/getcursor/docs" target="_blank">https://github.com/getcursor/docs</a>.</p>
+            <p class="page-description"><a href="https://docs.cursor.com" target="_blank">https://docs.cursor.com</a></p>
+            <p class="page-description"><a href="https://github.com/getcursor/docs" target="_blank">https://github.com/getcursor/docs</a></p>
         </div>
 
         <!-- FAQ -->
         <div>
-            <p>This FAQ is based on the content within the Cursor docs.</p>
+            <p class="faq_section_header">Susbcription Tiers and Usage Limits</p>
+            <p><a href="https://docs.cursor.com/get-started/usage" target="_blank">https://docs.cursor.com/get-started/usage</a></p>
+            <p class="faq_section_header">Privacy and Security</p>
+            <p><a href="https://docs.cursor.com/privacy/privacy" target="_blank">https://docs.cursor.com/privacy/privacy</a></p>
+            <p><a href="https://www.cursor.com/privacy" target="_blank">https://www.cursor.com/privacy</a></p>
+            <p><a href="https://www.cursor.com/security" target="_blank">https://www.cursor.com/security</a></p>
         </div>
 
         <!-- Videos  -->
-        <div>To do.</div>
+        <div>
+            <div id="media-player-container"></div>
+        </div>
     </div>
 
 </div>

@@ -1,3 +1,5 @@
+let media_player_playlists;  
+
 $(document).on("change", "#checkbox-topic-category input[type='checkbox']", function() {
 
     // uncheck all checkboxes except the one that was clicked
@@ -108,9 +110,27 @@ Ensure you have redacted any sensitive information before posting.
 
 });
 
+// media player events 
+$(document).on('click', '.playlist-item', (event) => {
+    const $this = $(event.currentTarget);
+    const video_src = $this.data('src');
+    const video_type = $this.data('type');
+    load_video(video_src, video_type);
+});
+
+// update the event handler to call load_playlist
+$(document).on('change', '#playlist', (event) => {  
+    const $this = $(event.currentTarget);
+    const selected_playlist = $this.val();
+    console.log(`selected_playlist is:  ${selected_playlist}`);
+    load_playlist(selected_playlist);
+});
+
+
 $(document).ready(function() {
     console.log("ready");
     generate_triage_helper_table_rows();
+    instantiate_media_player();
 });
 
 
@@ -121,13 +141,13 @@ const generate_triage_helper_table_rows = async () => {
             throw new Error("Network response was not ok");
         }
         const data = await response.json();
-        console.log(data);
+        //console.log(data);
 
         const $table = $("#triage-helper-table"); // select the table
         const $table_body = $table.find("tbody"); // select the table body
 
         data.forEach(item => {
-            console.log(item);
+            //console.log(item);
             const $tr = $("<tr>");
             $tr.append($("<td>").text(item.id));
             $tr.append($("<td>").text(item.category));
@@ -152,4 +172,149 @@ const generate_triage_helper_table_rows = async () => {
     } catch (error) {
         console.error("Failed to fetch data: ", error);
     }
+}
+
+
+const instantiate_media_player = async () => {
+    try {
+        const response = await fetch("data/playlists.json");
+        if (!response.ok) {
+            throw new Error("Network response was not ok");
+        }
+        const data = await response.json();
+        //console.log(data);
+
+        media_player_playlists = data.media_player_playlists;
+        const media_player_starting_playlist_name = "Third Party - Cursor Overview";
+
+        let playlist_options_html = '';
+
+        media_player_playlists.forEach(playlist => {
+            playlist_options_html += `<option value="${playlist.playlist_name}">${playlist.playlist_name}</option>`;
+          });
+
+        const media_player_html = `
+            <div class="media-player">
+                <div class="video-container">
+                  <div id="video-player-container"></div>
+                </div>
+                <div class="playlist-container">
+                  <div class="playlist-select">
+                    <select id="playlist" class="uk-select">${playlist_options_html}</select>
+                  </div>
+                  <div class="playlist-items"></div>
+                </div>
+              </div>
+        `; 
+
+        $("#media-player-container").html(media_player_html);
+
+        load_playlist(media_player_starting_playlist_name);
+
+    } catch (error) {
+        console.error("Failed to fetch data: ", error);
+    }
+}
+
+const load_playlist = (playlist_name) => {
+
+    console.log(`loading playlist: ${playlist_name}`);
+
+    if (!media_player_playlists) {
+      console.error("Media player playlists not loaded. Load playlist aborted.");
+      return;
+    }
+
+    // debug: log all playlist names
+    // media_player_playlists.forEach((playlist: Playlist) => {
+    //   console.log(`available playlist: ${playlist.playlist_name}`);
+    // });
+
+    // find the playlist by name
+    const selected_playlist = media_player_playlists.find(playlist => playlist.playlist_name.trim() === playlist_name.trim());
+
+    if (!selected_playlist) {
+      console.error(`Playlist ${playlist_name} not found.`);
+      return;
+    }
+
+    let playlist_items_html = '';
+
+    selected_playlist.videos.forEach(video => {
+      playlist_items_html += `
+        <div class="playlist-item" data-src="${video.video_src}" data-type="${video.type}">
+          <!--<img src="${video.thumbnail_src}" alt="${video.title_line_2} Thumbnail">-->
+          <div>
+          <p class="playlist-video-item-title-line-1">${video.title_line_1}</p>
+          <p class="playlist-video-item-title-line-2">${video.title_line_2}</p>
+          <p class="playlist-video-item-duration">${video.duration}</p>
+          </div>
+        </div>
+      `;
+    });
+
+    $('.playlist-items').html(playlist_items_html);
+
+    // load the first video in the selected playlist
+    if (selected_playlist.videos.length > 0) {
+      const first_video = selected_playlist.videos[0];
+      console.log(`loading first video: ${first_video.video_src}, type: ${first_video.type}`);
+      load_video(first_video.video_src, first_video.type);
+    }
+
+}
+
+const load_video = (src, type) => {
+
+    const $video_player_container = $('#video-player-container');
+    $video_player_container.empty(); // clear the current video or iframe
+
+    if (type === 'local') {
+
+      // check if the player is already initialized
+      const player = videojs.getPlayer('vid1');
+      if (player) {
+        player.dispose(); // dispose the existing player
+      }
+
+      // create a new video element for local videos
+      const video_element = $('<video>', {
+        id: 'vid1', // give a unique id to the video element
+        class: 'video-js vjs-default-skin',
+        html: `<source src="${src}" type="video/mp4">your browser does not support the video tag.`,
+        css: {
+          width: '100%',
+          height: '100%',
+          position: 'absolute',
+          top: 0,
+          left: 0
+        }
+      });
+      
+      $video_player_container.append(video_element);
+      
+      // explicitly instantiate video.js on the new video element
+      videojs('vid1', {
+        controls: true,
+        preload: 'auto',
+        fill: true 
+      });
+      
+    } else if (type === 'youtube') {
+      // create an iframe for youtube videos
+      const iframe_element = $('<iframe>', {
+        src: src,
+        allowfullscreen: true,
+        frameborder: 0,
+        css: {
+          width: '100%',
+          height: '100%',
+          position: 'absolute',
+          top: 0,
+          left: 0
+        }
+      });
+      $video_player_container.append(iframe_element);
+    }    
+
 }
