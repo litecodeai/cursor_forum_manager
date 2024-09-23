@@ -9,6 +9,27 @@
     "title_line_2": "Get Started with Cursor",
     "duration": "24:01", 
     "video_src": "https://www.youtube.com/embed/CqkZ-ybl3lg?rel=0"
+    },
+    {
+      "type": "youtube",
+      "title_line_1": "Jeffrey Codes",
+      "title_line_2": "Cursor - an AI-powered VSCode fork",
+      "duration": "12:11", 
+      "video_src": "https://www.youtube.com/embed/ltBYp0Ddi3c?rel=0"
+    },
+    {
+      "type": "youtube",
+      "title_line_1": "echohive",
+      "title_line_2": "Cursor IDE Deep Dive",
+      "duration": "25:27", 
+      "video_src": "https://www.youtube.com/embed/HZCtOh_GVrA?rel=0"
+    },
+    {
+      "type": "youtube",
+      "title_line_1": "AI Tube",
+      "title_line_2": "Cursor - The AI-first Code Editor",
+      "duration": "7:57", 
+      "video_src": "https://www.youtube.com/embed/1V4ryI2vN_I?rel=0"
     }
   ]
 },
@@ -21,6 +42,18 @@
       "title_line_2": "AI Software Development Tips",
       "duration": "13:23", 
       "video_src": "https://www.youtube.com/embed/VrHXjvikBrY?rel=0"
+      }
+    ]
+  },
+  {
+    "playlist_name": "Third Party - AI Coding Showcases",
+    "videos": [
+      {
+      "type": "youtube",
+      "title_line_1": "IndyDevDan",
+      "title_line_2": "All Roads Lead to AI Coding",
+      "duration": "20:06", 
+      "video_src": "https://www.youtube.com/embed/YALpX8oOn78?rel=0"
       }
     ]
   }
