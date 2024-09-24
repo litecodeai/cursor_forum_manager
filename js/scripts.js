@@ -416,7 +416,7 @@ async function handle_query(query) {
 
 // function to display the answer
 function display_answer(item, confidence_score) {
-    console.log('displaying answer for item:', item);
+    // console.log('displaying answer for item:', item);
 
     // check if the answer is an array
     if (Array.isArray(item.answer_steps)) {
