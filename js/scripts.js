@@ -1,3 +1,9 @@
+// Import the pipeline function and env from transformers
+import { pipeline, env } from 'https://cdn.jsdelivr.net/npm/@xenova/transformers/dist/transformers.min.js';
+
+// Disable local model checking
+env.allowLocalModels = false;
+
 let media_player_playlists;  
 
 $(document).on("change", "#checkbox-topic-category input[type='checkbox']", function() {
@@ -318,3 +324,166 @@ const load_video = (src, type) => {
     }    
 
 }
+
+/* AI Stuff */
+
+let model;
+let qa_data;
+
+// Use a promise to ensure qa_data is loaded
+let qa_data_loaded = new Promise((resolve, reject) => {
+  $.getJSON('data/qa_data_with_embeddings.json', function(data) {
+    qa_data = data.qa_data;
+    resolve();
+  });
+});
+
+// function to load the model
+async function load_model() {
+  if (!model) {
+    model = await pipeline('feature-extraction', 'Xenova/all-mpnet-base-v2');
+  }
+}
+
+// function to compute cosine similarity
+function cosine_similarity(a, b) {
+  let dotProduct = 0;
+  let normA = 0;
+  let normB = 0;
+
+  for (let i = 0; i < a.length; i++) {
+    dotProduct += a[i] * b[i];
+    normA += a[i] * a[i];
+    normB += b[i] * b[i];
+  }
+
+  const denominator = Math.sqrt(normA) * Math.sqrt(normB);
+
+  if (denominator === 0) {
+    return 0; // Avoid division by zero
+  } else {
+    return dotProduct / denominator;
+  }
+}
+
+// function to handle the user's query
+async function handle_query(query) {
+  await load_model();
+
+  // Generate embedding for the user's query
+  const output = await model(query);
+
+  // Extract the embeddings from the Tensor
+  // The tensor has dimensions [1, numTokens, embeddingDim]
+  const [batchSize, numTokens, embeddingDim] = output.dims;
+  const tokenEmbeddings = [];
+
+  for (let i = 0; i < numTokens; i++) {
+    const start = i * embeddingDim;
+    const end = start + embeddingDim;
+    const embedding = output.data.slice(start, end);
+    tokenEmbeddings.push(Array.from(embedding));
+  }
+
+  // Compute sentence embedding by averaging token embeddings
+  const query_vector = meanPooling(tokenEmbeddings);
+
+  console.log('Query Vector:', query_vector.length);
+
+  let best_match = null;
+  let highest_score = -Infinity;
+
+  // Compare embeddings to find the best match
+  for (const item of qa_data) {
+    console.log('Item Embedding:', item.embedding.length);
+
+    const score = cosine_similarity(query_vector, item.embedding);
+    console.log(`Similarity with "${item.question}": ${score}`);
+
+    if (score > highest_score) {
+      highest_score = score;
+      best_match = item;
+    }
+  }
+
+  // Display the best-matched answer if the score is acceptable
+  if (best_match && highest_score > 0.5) { // Lowered from 0.7 to 0.5
+    display_answer(best_match, highest_score);
+  } else {
+    $('#answer-steps').text('No relevant answer found.');
+  }
+}
+
+// function to display the answer
+function display_answer(item, confidence_score) {
+    console.log('displaying answer for item:', item);
+
+    // check if the answer is an array
+    if (Array.isArray(item.answer_steps)) {
+         console.log('answer_steps is an array');
+        // create a container for the answer
+        const answer_container = $('#answer-steps');
+        const confidence_score_container = $('#confidence-score');
+        answer_container.empty();
+        item.answer_steps.forEach((answer_paragraph) => {
+            // append each paragraph in a <p> tag
+            answer_container.append(`<p class="answer-paragraph">${answer_paragraph}</p>`);
+        });
+        confidence_score_container.html(`<p>Confidence Score: ${confidence_score}</p>`);
+    } else {
+        console.log('answer_steps is not an array');
+        // if answer is a string, display it directly
+        $('#answer-steps').text(item.answer_steps || 'no answer available.');
+    }
+
+    // clear and display related links
+    $('#related-links').empty();
+
+    if (item.related_links && item.related_links.length > 0) {
+        $('#related-links').append('<p class="answer-paragraph">Related Links:</p>');
+        item.related_links.forEach((link) => {
+            $('#related-links').append(`<p class="answer-paragraph"><a href="${link}" target="_blank">${link}</a></p>`);
+        });
+    }
+}
+
+// function to compute mean pooling of embeddings
+function meanPooling(tokenEmbeddings) {
+  const numTokens = tokenEmbeddings.length;
+  const embeddingDim = tokenEmbeddings[0].length;
+  const sentenceEmbedding = [];
+
+  for (let dim = 0; dim < embeddingDim; dim++) {
+    let sum = 0;
+    for (let token = 0; token < numTokens; token++) {
+      sum += tokenEmbeddings[token][dim];
+    }
+    sentenceEmbedding.push(sum / numTokens);
+  }
+
+  return sentenceEmbedding;
+}
+
+// event listener for the query form
+$(document).on('click', '#button_query_qa', async (event) => {
+  event.preventDefault();
+  const query = $('#query-input').val().trim();
+  if (query) {
+    $('#answer-steps').text('Loading...');
+    await qa_data_loaded; // Ensure data is loaded
+    await handle_query(query);
+  } else {
+    $('#answer-steps').text('Please enter a question.');
+  }
+});
+
+
+$(document).on('click', '.test-search-term', (event) => {
+  event.preventDefault();
+  const $this = $(event.currentTarget);
+  const search_term = $this.data('search-term');
+  $('#query-input').val(search_term);
+  $('#button_query_qa').click();
+});
+
+

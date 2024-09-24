@@ -53,14 +53,13 @@
     referrerpolicy="no-referrer" 
     />
 
-    <!-- Custom CSS -->
+    <!-- Custom CSS -->  
     <link rel="stylesheet" href="css/styles.css" />
 
     <!-- Custom JS -->
-    <script src="js/scripts.js"></script>
+    <script type="module" src="js/scripts.js"></script>
 
     <!-- Security Headers -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; img-src 'self' data:; font-src 'self' data:; connect-src 'self'; frame-src 'self' https://www.youtube.com;">
 
 </head>
 <body>
@@ -73,7 +72,7 @@
         <li><a href="#">Post Helper</a></li>
         <li><a href="#">Known Issues</a></li>
         <li><a href="#">Docs</a></li>
-        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Q&A</a></li>
         <li><a href="#">Videos</a></li>
     </ul>
     
@@ -92,14 +91,14 @@
         
                 <!-- System Information -->
                 <div class="uk-margin">
-                    <label class="uk-form-label" for="textarea-system-info">System</label>
+                    <label class="uk-form-label post-helper-form-label" for="textarea-system-info">System</label>
                     <small class="helper-text">copy and paste from <code>Cursor</code> > <code>Help</code> > <code>About</code></small>
                     <textarea id="textarea-system-info" class="uk-textarea" placeholder="enter system information here..."></textarea>
                 </div>
         
                 <!-- Topic Category -->
                 <div class="uk-margin">
-                    <label class="uk-form-label" for="checkbox-topic-category">Category</label>
+                    <label class="uk-form-label post-helper-form-label" for="checkbox-topic-category">Category</label>
                     <small class="helper-text">select your topic category</small>
                     <div id="checkbox-topic-category" class="checkbox-group">
                         <label id="topic-category-label-bug-report"><input class="uk-checkbox custom-checkbox" type="checkbox" name="topic-category" value="Bug Report"> Bug Report</label>
@@ -109,7 +108,7 @@
         
                 <!-- Interface -->
                 <div class="uk-margin">
-                    <label class="uk-form-label" for="select-interface-options">Interface</label>
+                    <label class="uk-form-label post-helper-form-label" for="select-interface-options">Interface</label>
                     <small class="helper-text">select the interface/s your issue relates to</small>
                     <select class="uk-select" id="select-interface-options" multiple>
                         <option value="ctrl-l-chat-normal">Ctrl + L - Chat - Normal</option>
@@ -122,7 +121,7 @@
         
                 <!-- Language Model -->
                 <div class="uk-margin">
-                    <label class="uk-form-label" for="select-language-model-options">Model</label>
+                    <label class="uk-form-label post-helper-form-label" for="select-language-model-options">Model</label>
                     <small class="helper-text">select the model/s your issue relates to</small>
                     <select class="uk-select" id="select-language-model-options" multiple>
                         <optgroup label="normal">
@@ -144,7 +143,7 @@
         
                 <!-- Symbols -->
                 <div class="uk-margin">
-                    <label class="uk-form-label" for="select-symbols-options">Symbols</label>
+                    <label class="uk-form-label post-helper-form-label" for="select-symbols-options">Symbols</label>
                     <small class="helper-text">select the <a href="https://docs.cursor.com/context/@-symbols/basic" target="_blank">Symbols</a> your issue relates to</small>
                     <select class="uk-select" id="select-symbols-options" multiple>
                         <option value="symbol-files">@Files</option>
@@ -161,7 +160,7 @@
         
                 <!-- Submission -->
                 <div class="uk-margin">
-                    <label class="uk-form-label" for="select-submission-options">Submission</label>
+                    <label class="uk-form-label post-helper-form-label" for="select-submission-options">Submission</label>
                     <small class="helper-text">select how you are submitting your prompt</small>
                     <select class="uk-select" id="select-submission-options" multiple>
                         <option value="chat-with-context">Chat with context</option>
@@ -173,14 +172,14 @@
         
                 <!-- Logs - Console -->
                 <div class="uk-margin">
-                    <label class="uk-form-label" for="textarea-logs-console">Console Logs</label>
+                    <label class="uk-form-label post-helper-form-label" for="textarea-logs-console">Console Logs</label>
                     <small class="helper-text">copy and paste relevant logs from <code>Cursor</code> > <code>Help</code> > <code>Toggle Developer Tools</code> and then click <code>Console</code></small>
                     <textarea id="textarea-logs-console" class="uk-textarea" placeholder="enter console logs here..."></textarea>
                 </div>
         
                 <!-- Logs - Terminal -->
                 <div class="uk-margin">
-                    <label class="uk-form-label" for="textarea-logs-terminal">Terminal Logs</label>
+                    <label class="uk-form-label post-helper-form-label" for="textarea-logs-terminal">Terminal Logs</label>
                     <small class="helper-text">copy and paste relevant logs from <code>Cursor</code> > <code>Terminal</code> > <code>Output</code> and then select <code>Window</code> or <code>Cursor Tab</code> or <code>Cursor Indexing & Retrieval</code></small>
                     <small class="helper-text">you can also view logs via the command palette (<code>Ctrl</code> + <code>Shift</code> + <code>P</code>) and select <code>Developer: Open Logs Folder</code></small>
                     <textarea id="textarea-logs-terminal" class="uk-textarea" placeholder="enter terminal logs here..."></textarea>
@@ -188,21 +187,21 @@
         
                 <!-- Desired Behaviour -->
                 <div class="uk-margin">
-                    <label class="uk-form-label" for="textarea-behaviour-desired">Desired Behaviour</label>
+                    <label class="uk-form-label post-helper-form-label" for="textarea-behaviour-desired">Desired Behaviour</label>
                     <small class="helper-text">enter the desired behaviour</small>
                     <textarea id="textarea-behaviour-desired" class="uk-textarea" placeholder="enter desired behaviour here..."></textarea>
                 </div>
         
                 <!-- Actual Behaviour -->
                 <div class="uk-margin">
-                    <label class="uk-form-label" for="textarea-behaviour-actual">Actual Behaviour</label>
+                    <label class="uk-form-label post-helper-form-label" for="textarea-behaviour-actual">Actual Behaviour</label>
                     <small class="helper-text">enter the actual behaviour</small>
                     <textarea id="textarea-behaviour-actual" class="uk-textarea" placeholder="enter actual behaviour here..."></textarea>
                 </div>
         
                 <!-- Steps to Reproduce -->
                 <div class="uk-margin">
-                    <label class="uk-form-label" for="textarea-steps-to-reproduce">Steps to Reproduce</label>
+                    <label class="uk-form-label post-helper-form-label" for="textarea-steps-to-reproduce">Steps to Reproduce</label>
                     <small class="helper-text">enter the steps to reproduce</small>
                     <textarea id="textarea-steps-to-reproduce" class="uk-textarea" placeholder="enter steps to reproduce here..."></textarea>
                 </div>
@@ -254,19 +253,52 @@
 
         <!-- Docs -->
         <div>
+            <p class="docs_section_header">General</p>
             <p class="page-description"><a href="https://docs.cursor.com" target="_blank">https://docs.cursor.com</a></p>
             <p class="page-description"><a href="https://github.com/getcursor/docs" target="_blank">https://github.com/getcursor/docs</a></p>
-        </div>
 
-        <!-- FAQ -->
-        <div>
-            <p class="faq_section_header">Susbcription Tiers and Usage Limits</p>
+            <p class="docs_section_header">Susbcriptions</p>
             <p><a href="https://docs.cursor.com/get-started/usage" target="_blank">https://docs.cursor.com/get-started/usage</a></p>
-            <p class="faq_section_header">Privacy and Security</p>
+            <p class="docs_section_header">Security</p>
             <p><a href="https://docs.cursor.com/privacy/privacy" target="_blank">https://docs.cursor.com/privacy/privacy</a></p>
             <p><a href="https://www.cursor.com/privacy" target="_blank">https://www.cursor.com/privacy</a></p>
             <p><a href="https://www.cursor.com/security" target="_blank">https://www.cursor.com/security</a></p>
+
         </div>
+
+        <!-- Q&A -->
+         <div>
+            <p class="page-description">Just an idea in development at the moment...</p>
+            <p class="page-description"><a href="data/qa_data.json" target="_blank">qa_data.json</a> contains an array of objects, where each object contains a question/answer pair.</p>
+            <p class="page-description"><a href="preprocessing/generate_embeddings.js" target="_blank">generate_embeddings.js</a> is a Node.js script that generates embeddings for the <code>question</code> property of each object in the array.</p>
+            <p class="page-description">The model currently used to generate the embeddings is <a href="https://huggingface.co/Xenova/all-mpnet-base-v2" target="_blank">Xenova/all-mpnet-base-v2</a>.</p>
+            <p class="page-description"><a href="data/qa_data_with_embeddings.json" target="_blank">qa_data_with_embeddings.json</a> is the output of the <code>generate_embeddings.js</code> script.</p>
+            <p class="page-description">Try these test questions:</p>
+            <ul class="test-search-terms">
+                <li>Don't get a response <a class="test-search-term" data-search-term="don't get a response">search</a></li>
+                <li>Apply doesn't work <a class="test-search-term" data-search-term="apply doesn't work">search</a></li>
+                <li>How to find a waterfall? <a class="test-search-term" data-search-term="how to find a waterfall">search</a></li>
+                <li>Where can I get a red car? <a class="test-search-term" data-search-term="where can i get a red car">search</a></li>
+                <li>Where are the purple cows? <a class="test-search-term" data-search-term="where are the purple cows">search</a></li>
+            </ul>
+
+<form id="query-form" class="uk-form-stacked">
+  <div class="uk-margin">
+    <label class="uk-form-label" for="query-input">Question:</label>
+    <div class="uk-form-controls">
+      <input class="uk-input" type="text" id="query-input" placeholder="Enter your question">
+    </div>
+  </div>
+  <div class="uk-margin">
+    <button id="button_query_qa" class="uk-button uk-button-secondary" type="submit">Submit</button>
+  </div>
+</form>
+<p>Answer:</p>
+<div id="answer-steps"></div>
+<div id="confidence-score"></div>
+<div id="related-links"></div>
+
+         </div>
 
         <!-- Videos  -->
         <div>

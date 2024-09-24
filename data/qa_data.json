@@ -1,0 +1,78 @@
+{
+    "qa_data": [
+      {
+        "id": 1,
+        "interface": "ctrl_l",
+        "category": "error",
+        "question": "When using `Ctrl` + `L`, I submit my prompt and I don't get a response, what should I do?",
+        "answer_steps": [
+            "When you submit a prompt using <code>Ctrl</code> + <code>L</code> and don't get a response, it is likely a connection issue.",
+            "Here are some steps you can take.",
+            "Look at your logs to see if this is the case.",
+            "Resolve it yourself.",
+            "View the list of known issues to find a solution.",
+            "Add all basic troubleshooting steps to a post on the <a href='https://forum.cursor.com' target='_blank'>Cursor Forum</a>."
+        ],
+        "related_links": [
+            "https://docs.cursor.com/troubleshooting/troubleshooting-guide"
+        ],
+        "last_updated": "2024-09-24"
+      },
+      {
+        "id": 2,
+        "interface": "ctrl_l",
+        "category": "error",
+        "question": "When using `Ctrl` + `L`, I submit my prompt, get a response, click `Apply` and the changes are not applied, what should I do?",
+        "answer_steps": [
+            "When you submit a prompt using <code>Ctrl</code> + <code>L</code>, get a response, click <code>Apply</code> and the changes are not applied, it is likely a bug.",
+            "Here are some steps you can take.",
+            "View the list of known issues to find a solution.",
+            "Add all basic troubleshooting steps to a post on the <a href='https://forum.cursor.com' target='_blank'>Cursor Forum</a>."
+        ],
+        "related_links": [
+            "https://docs.cursor.com/troubleshooting/troubleshooting-guide"
+        ],
+        "last_updated": "2024-09-24"
+      },
+      {
+        "id": 3,
+        "interface": "ctrl_l",
+        "category": "error",
+        "question": "I want to go to a waterfall, what should I do?",
+        "answer_steps": [
+            "You can find a waterfall by searching for it."
+        ],
+        "related_links": [
+            "https://www.google.com"
+        ],
+        "last_updated": "2024-09-24"
+      },
+      {
+        "id": 4,
+        "interface": "ctrl_l",
+        "category": "error",
+        "question": "Where can I get a red car?",
+        "answer_steps": [
+            "You can get a red car at the car shop."
+        ],
+        "related_links": [
+            "https://www.google.com"
+        ],
+        "last_updated": "2024-09-24"
+      },
+      {
+        "id": 5,
+        "interface": "ctrl_l",
+        "category": "error",
+        "question": "Where can I find a purple cow?",
+        "answer_steps": [
+            "In Switzerland, ofcourse."
+        ],
+        "related_links": [
+            "https://www.google.com"
+        ],
+        "last_updated": "2024-09-24"
+      }
+    ]
+  }
+  
