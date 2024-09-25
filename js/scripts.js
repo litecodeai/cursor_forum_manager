@@ -137,8 +137,28 @@ $(document).ready(function() {
     //console.log("ready");
     generate_triage_helper_table_rows();
     instantiate_media_player();
+    handle_url_switcher();
 });
 
+// function to handle URL switcher
+function handle_url_switcher() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const tab = urlParams.get('tab');
+
+    if (tab) {
+        const tab_index = {
+            'post_helper': 0,
+            'known_issues': 1,
+            'docs': 2,
+            'qa': 3,
+            'videos': 4
+        }[tab];
+
+        if (tab_index !== undefined) {
+            UIkit.switcher('.uk-tab').show(tab_index);
+        }
+    }
+}
 
 const generate_triage_helper_table_rows = async () => {
     try {
@@ -334,9 +354,14 @@ let qa_data;
 let qa_data_loaded = new Promise((resolve, reject) => {
   $.getJSON('data/qa_data_with_embeddings.json', function(data) {
     qa_data = data.qa_data;
+    for (const item of qa_data) {
+      $("#question-list").append(`<li class="question-list-item">${item.question}</li>`);
+    }
     resolve();
   });
 });
+
+await qa_data_loaded; // Ensure data is loaded
 
 // function to load the model
 async function load_model() {
@@ -470,7 +495,7 @@ $(document).on('click', '#button_query_qa', async (event) => {
   const query = $('#query-input').val().trim();
   if (query) {
     $('#answer-steps').text('Loading...');
-    await qa_data_loaded; // Ensure data is loaded
+    // await qa_data_loaded; // Ensure data is loaded
     await handle_query(query);
   } else {
     $('#answer-steps').text('Please enter a question.');
@@ -484,6 +509,56 @@ $(document).on('click', '.test-search-term', (event) => {
   const search_term = $this.data('search-term');
   $('#query-input').val(search_term);
   $('#button_query_qa').click();
+});
+
+
+$(document).on('click', '.question-list-item', (event) => {
+  event.preventDefault();
+  const $this = $(event.currentTarget);
+  const search_term = $this.text();
+  $('#query-input').val(search_term);
+  $('#button_query_qa').click();
+});
+
+
+  
+  $(document).on('click', '.uk-tab li', function() {
+    const tab_names = ['post_helper', 'known_issues', 'docs', 'qa', 'videos'];
+      const tab_index = $(this).index();
+      const tab_name = tab_names[tab_index];
+      if (tab_name) {
+          const new_url = `${window.location.origin}${window.location.pathname}?tab=${tab_name}`;
+          history.pushState(null, '', new_url);
+      }
+  });
+
+$(document).on('click', '#how-does-qa-work', (e) => {
+  e.preventDefault();
+  
+  const modal_html = `
+  <div class="uk-modal-dialog uk-margin-auto-vertical">
+  <button class="close-my-uikit-modal uk-modal-close-default" type="button" uk-close></button>
+  <div class="uk-modal-body" uk-overflow-auto>
+  
+<p class="page-description"><a href="data/qa_data.json" target="_blank">qa_data.json</a> contains an array of question/answer pair objects.</p>
+<p class="page-description"><a href="preprocessing/generate_embeddings.js" target="_blank">generate_embeddings.js</a> generates embeddings for the <code>question</code> property.</p>
+<p class="page-description">The model used to generate the embeddings is <a href="https://huggingface.co/Xenova/all-mpnet-base-v2" target="_blank">Xenova/all-mpnet-base-v2</a>.</p>
+<p class="page-description"><a href="data/qa_data_with_embeddings.json" target="_blank">qa_data_with_embeddings.json</a> is the output of<code>generate_embeddings.js</code>.</p>
+  <p class="page-description">Clicking the <code>Search</code> button:</p>
+  <ul>
+      <li>Embeds the query using the same model as the question embeddings</li>
+      <li>Performs a cosine similarity search on the <code>embeddings</code> property</li>
+      <li>Returns the item with the highest cosine similarity score</li>
+  </ul>
+  <p class="page-description">This is a client-side search on <code>qa_data_with_embeddings.json</code>.</p>
+  </div>
+  </div>
+  `;
+  
+  $('#my-modal-overflow-qa-info').html(modal_html);
+  UIkit.modal("#my-modal-overflow-qa-info").show();
+
+
 });
 
 

@@ -78,7 +78,7 @@
     
     <div class="uk-switcher uk-margin">
         <!-- Post Helper -->
-        <div>
+        <div id="switcher_post_helper">
             <p class="page-description">An unofficial tool that generates text that you can add to a <a href="https://forum.cursor.com" target="_blank">Cursor Forum</a> post.</p>
 
             <p class="page-description">This is a client-side tool, no data is sent to the server.</p>
@@ -219,8 +219,8 @@
 
         </div>
         
-        <!-- Issue Triage Helper -->
-        <div>
+        <!-- Known Issues -->
+        <div id="switcher_known_issues">
             <p class="page-description">An unofficial tool that lists known issues and their occurrence, priority and status.</p>
 
             <p class="page-description">Currently a client-side proof of concept that is using dummy data.</p>
@@ -252,7 +252,7 @@
         </div>
 
         <!-- Docs -->
-        <div>
+        <div id="switcher_docs">
             <p class="docs_section_header">General</p>
             <p class="page-description"><a href="https://docs.cursor.com" target="_blank">https://docs.cursor.com</a></p>
             <p class="page-description"><a href="https://github.com/getcursor/docs" target="_blank">https://github.com/getcursor/docs</a></p>
@@ -267,43 +267,43 @@
         </div>
 
         <!-- Q&A -->
-         <div>
-            <p class="page-description">Just an idea in development at the moment...</p>
-            <p class="page-description"><a href="data/qa_data.json" target="_blank">qa_data.json</a> contains an array of objects, where each object contains a question/answer pair.</p>
-            <p class="page-description"><a href="preprocessing/generate_embeddings.js" target="_blank">generate_embeddings.js</a> is a Node.js script that generates embeddings for the <code>question</code> property of each object in the array.</p>
-            <p class="page-description">The model currently used to generate the embeddings is <a href="https://huggingface.co/Xenova/all-mpnet-base-v2" target="_blank">Xenova/all-mpnet-base-v2</a>.</p>
-            <p class="page-description"><a href="data/qa_data_with_embeddings.json" target="_blank">qa_data_with_embeddings.json</a> is the output of the <code>generate_embeddings.js</code> script.</p>
-            <p class="page-description">Try these test questions:</p>
-            <ul class="test-search-terms">
-                <li>Don't get a response <a class="test-search-term" data-search-term="don't get a response">search</a></li>
-                <li>Apply doesn't work <a class="test-search-term" data-search-term="apply doesn't work">search</a></li>
-                <li>How to find a waterfall? <a class="test-search-term" data-search-term="how to find a waterfall">search</a></li>
-                <li>Where can I get a red car? <a class="test-search-term" data-search-term="where can i get a red car">search</a></li>
-                <li>Where are the purple cows? <a class="test-search-term" data-search-term="where are the purple cows">search</a></li>
-            </ul>
-
-            <p class="page-description">(the first search runs slow, subsequent searches are faster)</p>
-
+         <div id="switcher_qa">
+            <div id="my-modal-overflow-qa-info" class="uk-flex-top" uk-modal></div>
+            <div uk-grid>
+            <div id="qa_pane" class="uk-width-expand">
+                <p class="docs_section_header">Question</p>
 <form id="query-form" class="uk-form-stacked">
   <div class="uk-margin">
-    <label class="uk-form-label" for="query-input">Question:</label>
     <div class="uk-form-controls">
-      <input class="uk-input" type="text" id="query-input" placeholder="Enter your question">
+      <input class="uk-input" type="text" id="query-input" placeholder="Search embedded questions...">
     </div>
   </div>
   <div class="uk-margin">
-    <button id="button_query_qa" class="uk-button uk-button-secondary" type="submit">Submit</button>
+    <button id="button_query_qa" class="uk-button uk-button-secondary" type="submit">Submit</button><a id="how-does-qa-work">How does this work?</a>
   </div>
 </form>
-<p>Answer:</p>
+<p class="docs_section_header">Answer</p>
+<div id="answer-container">
 <div id="answer-steps"></div>
 <div id="confidence-score"></div>
 <div id="related-links"></div>
+</div>
+
+
+
+            </div>
+        <div id="question_pane"class="uk-width-1-3">
+            <input type="text" id="question-search" placeholder="Search questions - to do..." class="uk-input">
+            <div id="question-container">
+                <ul id="question-list"></ul>
+            </div>
+        </div>
+        </div>
 
          </div>
 
         <!-- Videos  -->
-        <div>
+        <div id="switcher_videos">
             <div id="media-player-container"></div>
         </div>
     </div>

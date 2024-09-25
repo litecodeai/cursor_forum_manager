@@ -64,6 +64,12 @@ p.docs_section_header {
     border-radius: 0px;
 }
 
+p.question-pane-title {
+    background: #525252;
+    padding: 5px 10px;
+    color: #fff;
+}
+
 /* labels */
 
 .post-helper-form-label {
@@ -98,13 +104,17 @@ p.docs_section_header {
 .page-description a,
 .answer-paragraph a,
 .helper-text a,
-.triage-helper-related-topic {
+.triage-helper-related-topic,
+a#how-does-qa-work,
+ul.test-search-terms a {
     text-decoration: underline;
 }
 
-
-ul.test-search-terms a {
-    text-decoration: underline;
+a#how-does-qa-work {
+    margin-left: 20px;
+    text-transform: lowercase;
+    font-size: 14px;
+    color: #333;
 }
 
 /* switcher tabs */
@@ -145,6 +155,24 @@ ul.test-search-terms a {
 }
 
 
+div#question_pane {
+    background: #eee;
+    padding: 20px;
+    border: 1px solid #333;
+    height: 500px;
+}
+
+/* inputs */
+
+input#question-search {
+    border: 1px solid #333;
+    margin-bottom: 20px;
+}
+
+input#query-input {
+    border: 1px solid #333;
+}
+
 /* buttons */
 
 #button_generate_forum_post_text {
@@ -165,6 +193,23 @@ ul.test-search-terms a {
 #topic-category-label-bug-report {
     margin-right: 20px;
 }
+
+/* lists */
+
+.question-list-item {
+    color: #000;
+    list-style: none;
+    font-size: 14px;
+    cursor: pointer;
+    border-bottom: 1px solid #dddddd;
+    padding: 20px 15px !important;
+}
+
+ul#question-list {
+    padding-left: 0px !important;
+}
+
+
 
 /* notifications */
 
@@ -429,3 +474,26 @@ scrollbar-color: #6b6b6b #d2d2d2;
     color: #666 !important;
     font-size: 14px !important;
   }
+
+  /* structure */
+
+  div#answer-container {
+    /* background: #111; */
+    height: 1000px;
+    overflow-y: scroll;
+    border: 1px solid #333;
+    padding: 15px;
+}
+
+div#question-container {
+    background: #ffffff;
+    height: calc(100% - 75px);
+    overflow-y: auto;
+    border: 1px solid #333;
+}
+
+  div#qa_pane {
+    padding-right: 20px;
+  }
+  
+  
