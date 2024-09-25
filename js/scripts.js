@@ -423,6 +423,7 @@ async function handle_query(query) {
     console.log('Item Embedding:', item.embedding.length);
 
     const score = cosine_similarity(query_vector, item.embedding);
+
     console.log(`Similarity with "${item.question}": ${score}`);
 
     if (score > highest_score) {
@@ -443,33 +444,37 @@ async function handle_query(query) {
 function display_answer(item, confidence_score) {
     // console.log('displaying answer for item:', item);
 
-    // check if the answer is an array
-    if (Array.isArray(item.answer_steps)) {
-         console.log('answer_steps is an array');
-        // create a container for the answer
-        const answer_container = $('#answer-steps');
-        const confidence_score_container = $('#confidence-score');
-        answer_container.empty();
-        item.answer_steps.forEach((answer_paragraph) => {
-            // append each paragraph in a <p> tag
-            answer_container.append(`<p class="answer-paragraph">${answer_paragraph}</p>`);
-        });
-        confidence_score_container.html(`<p>Confidence Score: ${confidence_score}</p>`);
-    } else {
-        console.log('answer_steps is not an array');
-        // if answer is a string, display it directly
-        $('#answer-steps').text(item.answer_steps || 'no answer available.');
-    }
+    // create a shallow copy of the item to avoid modifying the original object
+    const item_copy = { ...item };
+
+    // remove the embeddings property from the item copy
+    delete item_copy.embedding;
+
+    item_copy.confidence_score = confidence_score;
+
+    // create a container for the answer
+    //const answer_container = $('#answer-steps');
+    const confidence_score_container = $('#confidence-score');
+    //answer_container.empty();
+    //item.answer_steps.forEach((answer_paragraph) => {
+        // append each paragraph in a <p> tag
+        //answer_container.append(`<p class="answer-paragraph">${answer_paragraph}</p>`);
+    //});
+    //confidence_score_container.html(`<p>Confidence Score: ${confidence_score}</p>`);
 
     // clear and display related links
-    $('#related-links').empty();
+    //$('#related-links').empty();
 
-    if (item.related_links && item.related_links.length > 0) {
-        $('#related-links').append('<p class="answer-paragraph">Related Links:</p>');
-        item.related_links.forEach((link) => {
-            $('#related-links').append(`<p class="answer-paragraph"><a href="${link}" target="_blank">${link}</a></p>`);
-        });
-    }
+    // if (item.related_links && item.related_links.length > 0) {
+    //     $('#related-links').append('<p class="answer-paragraph">Related Links:</p>');
+    //     item.related_links.forEach((link) => {
+    //         $('#related-links').append(`<p class="answer-paragraph"><a href="${link}" target="_blank">${link}</a></p>`);
+    //     });
+    // }
+
+    // display the whole object using jquery.json-viewer
+    $('#json-viewer').jsonViewer(item_copy, {collapsed: false, rootCollapsable: true, withQuotes: false, withLinks: true});
+
 }
 
 // function to compute mean pooling of embeddings
@@ -494,7 +499,7 @@ $(document).on('click', '#button_query_qa', async (event) => {
   event.preventDefault();
   const query = $('#query-input').val().trim();
   if (query) {
-    $('#answer-steps').text('Loading...');
+    //$('#answer-container').text('Loading...');
     // await qa_data_loaded; // Ensure data is loaded
     await handle_query(query);
   } else {
@@ -516,8 +521,22 @@ $(document).on('click', '.question-list-item', (event) => {
   event.preventDefault();
   const $this = $(event.currentTarget);
   const search_term = $this.text();
-  $('#query-input').val(search_term);
+  const $query_input = $('#query-input');
+  $query_input.css({
+    'background-color': '#c1ffc1',
+    'color': '#000'
+  }).val(search_term);
   $('#button_query_qa').click();
+
+  // reset transition before applying it again
+  $query_input.css('transition', 'none');
+  setTimeout(() => {
+    $query_input.css('transition', 'background-color 2s ease, color 2s ease');
+    $query_input.css({
+      'background-color': '',
+      'color': ''
+    });
+  }, 0);
 });
 
 

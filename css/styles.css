@@ -482,7 +482,7 @@ scrollbar-color: #6b6b6b #d2d2d2;
     height: 1000px;
     overflow-y: scroll;
     border: 1px solid #333;
-    padding: 15px;
+    /* padding: 15px; */
 }
 
 div#question-container {

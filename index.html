@@ -59,6 +59,13 @@
     <!-- Custom JS -->
     <script type="module" src="js/scripts.js"></script>
 
+    <!-- jquery.json-viewer CSS -->
+    <link rel="stylesheet" href="css/jquery.json-viewer.css">
+
+    <!-- jquery.json-viewer JS -->
+    <script src="js/jquery.json-viewer.js"></script>
+
+
     <!-- Security Headers -->
 
 </head>
@@ -279,14 +286,15 @@
     </div>
   </div>
   <div class="uk-margin">
-    <button id="button_query_qa" class="uk-button uk-button-secondary" type="submit">Submit</button><a id="how-does-qa-work">How does this work?</a>
+    <button id="button_query_qa" class="uk-button uk-button-secondary" type="submit">Search</button><a id="how-does-qa-work">How does this work?</a>
   </div>
 </form>
 <p class="docs_section_header">Answer</p>
 <div id="answer-container">
-<div id="answer-steps"></div>
+<!--<div id="answer-steps"></div>-->
 <div id="confidence-score"></div>
-<div id="related-links"></div>
+<!--<div id="related-links"></div>-->
+<div id="json-viewer"></div>
 </div>
 
 
