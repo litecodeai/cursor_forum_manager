@@ -502,7 +502,7 @@ function display_answers(results, result_count) {
           <div class="answer_property_label">
             <p class="lemontree">Question</p>
           </div>
-          <div class="answer_property_value uk-width-expand">
+          <div class="answer_property_value uk-width-expand qa_question">
             <p class="appletree">${item_copy.question}</p>
           </div>
         </div>
@@ -510,7 +510,7 @@ function display_answers(results, result_count) {
           <div class="full_width_answer_title">
             <p class="lemontree">Answer</p>
           </div>
-          <div class="full_width_answer_content">
+          <div class="full_width_answer_content qa_answer">
             ${answer_steps_html}
           </div>
         </div>

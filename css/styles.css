@@ -643,3 +643,13 @@ button#add-related-link {
     margin-top: 25px;
     margin-bottom: 15px;
 }
+
+.qa_question {
+    background: #ffff96;
+    color: #000;
+}
+
+.qa_answer {
+    background: #b6ff96;
+    color: #000;
+}
