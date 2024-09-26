@@ -462,14 +462,14 @@ async function handle_query(query) {
 
   // display the top results
   if (top_results.length > 0) {
-    display_answers(top_results);
+    display_answers(top_results, top_results.length);
   } else {
     $('#answer-steps').text('No relevant answers found.');
   }
 }
 
 // function to display the answers
-function display_answers(results) {
+function display_answers(results, result_count) {
   $('#answer-container').empty();
 
   results.forEach(({ item, score }) => {
@@ -558,6 +558,7 @@ function display_answers(results) {
     `;
 
     $('#answer-container').append(answer_item_html);
+    $('#qa_answers_result_count').text(`${result_count}`);
   });
 }
 
@@ -635,6 +636,7 @@ $(document).on('click', '.question-list-item', (event) => {
           // clear answer container and query input
           $('#answer-container').empty();
           $('#query-input').val('');
+          $('#qa_answers_result_count').html('&nbsp;');
       }
   });
 
