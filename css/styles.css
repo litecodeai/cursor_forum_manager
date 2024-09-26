@@ -106,7 +106,8 @@ p.question-pane-title {
 .helper-text a,
 .triage-helper-related-topic,
 a#how-does-qa-work,
-ul.test-search-terms a {
+ul.test-search-terms a,
+div#answer-container a {
     text-decoration: underline;
 }
 
@@ -182,6 +183,17 @@ input#query-input {
 #button_copy_to_clipboard {
     margin: 20px 30px 0px 0px;
     border-radius: 5px;
+}
+
+div#qa-data-json-viewer-container {
+    position: relative;
+}
+
+#qa-data-json-viewer-copy-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    border: 1px solid #333;
 }
 
 /* checkboxes */
@@ -478,7 +490,7 @@ scrollbar-color: #6b6b6b #d2d2d2;
   /* structure */
 
   div#answer-container {
-    /* background: #111; */
+    background: #333;
     height: 1000px;
     overflow-y: scroll;
     border: 1px solid #333;
@@ -496,4 +508,88 @@ div#question-container {
     padding-right: 20px;
   }
   
-  
+  div#qa-data-container {
+    border: 1px solid #333;
+} 
+
+pre {
+    border: 1px solid #333;
+}
+
+/* answers */
+
+.answer {
+    border-bottom: 15px solid #696969;
+    background: #fff;
+}
+
+.answer_property:not(:last-child) {
+    border-bottom: 1px solid #333;
+}
+
+.answer_property_label {
+    border-right: 1px solid #333;
+    width: 150px;
+    background: #eee;
+}
+
+.answer_property_value {
+    border-right: 1px solid #333;
+}
+
+/* hackety hack, don't talk back */
+.answer_property {
+    margin: 0px !important;
+}
+
+.answer_property_label, .answer_property_value {
+    display: inline-block;
+    padding: 0px;
+}
+
+p.lemontree, p.appletree, p.figtree {
+    margin: 0px;
+    padding: 5px 15px;
+    font-size: 14px;
+}
+
+p.lemontree, p.figtree {
+    font-weight: 600;
+}
+
+p.figtree {
+    padding: 5px 15px;
+    margin: 0px;
+}
+
+p.orangetree {
+    font-size: 14px;
+}
+
+p.orangetree:first-child {
+    margin-top: 5px;
+}
+
+p.orangetree:last-child {
+    margin-bottom: 5px;
+}
+
+p.orangetree {
+    margin-top: 10px;
+}
+
+.full_width_answer_title {
+    border-bottom: 1px solid #333;
+    background: #eee;
+    border-right: 1px solid #333;
+}
+
+.full_width_answer_content {
+    padding: 15px;
+    border-right: 1px solid #333;
+}
+
+span.answers_tagline {
+    font-size: 12px;
+    margin-left: 10px;
+}

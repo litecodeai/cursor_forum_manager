@@ -133,11 +133,34 @@ $(document).on('change', '#playlist', (event) => {
 });
 
 
-$(document).ready(function() {
+$(document).ready(async function() {
     //console.log("ready");
     generate_triage_helper_table_rows();
     instantiate_media_player();
     handle_url_switcher();
+
+    const qa_data_response = await fetch("data/qa_data.json");
+    const qa_data = await qa_data_response.json();
+    
+    // render JSON using jsonViewer
+    //$("#qa-data-json-viewer").jsonViewer(qa_data, {collapsed: false, rootCollapsable: true, withQuotes: false, withLinks: true});
+
+    $("#qa-data-json-viewer").html(`<code class="json">${JSON.stringify(qa_data, null, 2)}</code>`);
+
+    // apply highlight.js to each code block within the jsonViewer
+    // $('#qa-data-json-viewer').each(function(i, block) {
+    //     hljs.highlightElement(block);
+    // });
+
+  //   // apply highlight.js to each code block within the jsonViewer
+  //   $('#qa-data-json-viewer .json-viewer').each(function(i, block) {
+  //     $(block).find('pre code').each(function(j, codeBlock) {
+  //         hljs.highlightElement(codeBlock);
+  //     });
+  // });    
+
+hljs.highlightAll();
+
 });
 
 // function to handle URL switcher
@@ -149,9 +172,13 @@ function handle_url_switcher() {
         const tab_index = {
             'post_helper': 0,
             'known_issues': 1,
-            'docs': 2,
-            'qa': 3,
-            'videos': 4
+            'upcoming_features': 2,
+            'docs': 3,
+            'qa': 4,
+            'qa_data': 5,
+            'videos': 6,
+            'ui_explorer': 7,
+            'glossary': 8
         }[tab];
 
         if (tab_index !== undefined) {
@@ -395,90 +422,147 @@ function cosine_similarity(a, b) {
 async function handle_query(query) {
   await load_model();
 
-  // Generate embedding for the user's query
+  // generate embedding for the user's query
   const output = await model(query);
 
-  // Extract the embeddings from the Tensor
-  // The tensor has dimensions [1, numTokens, embeddingDim]
-  const [batchSize, numTokens, embeddingDim] = output.dims;
-  const tokenEmbeddings = [];
+  // extract the embeddings from the tensor
+  const [batch_size, num_tokens, embedding_dim] = output.dims;
+  const token_embeddings = [];
 
-  for (let i = 0; i < numTokens; i++) {
-    const start = i * embeddingDim;
-    const end = start + embeddingDim;
+  for (let i = 0; i < num_tokens; i++) {
+    const start = i * embedding_dim;
+    const end = start + embedding_dim;
     const embedding = output.data.slice(start, end);
-    tokenEmbeddings.push(Array.from(embedding));
+    token_embeddings.push(Array.from(embedding));
   }
 
-  // Compute sentence embedding by averaging token embeddings
-  const query_vector = meanPooling(tokenEmbeddings);
+  // compute sentence embedding by averaging token embeddings
+  const query_vector = mean_pooling(token_embeddings);
 
-  console.log('Query Vector:', query_vector.length);
+  console.log('query vector:', query_vector.length);
 
-  let best_match = null;
-  let highest_score = -Infinity;
+  const results = [];
 
-  // Compare embeddings to find the best match
+  // compare embeddings to find the best matches
   for (const item of qa_data) {
-    console.log('Item Embedding:', item.embedding.length);
+    console.log('item embedding:', item.embedding.length);
 
     const score = cosine_similarity(query_vector, item.embedding);
 
-    console.log(`Similarity with "${item.question}": ${score}`);
+    console.log(`similarity with "${item.question}": ${score}`);
 
-    if (score > highest_score) {
-      highest_score = score;
-      best_match = item;
+    if (score > 0.5) {
+      results.push({ item, score });
     }
   }
 
-  // Display the best-matched answer if the score is acceptable
-  if (best_match && highest_score > 0.5) { // Lowered from 0.7 to 0.5
-    display_answer(best_match, highest_score);
+  // sort results by score in descending order and take the top 5
+  results.sort((a, b) => b.score - a.score);
+  const top_results = results.slice(0, 5);
+
+  // display the top results
+  if (top_results.length > 0) {
+    display_answers(top_results);
   } else {
-    $('#answer-steps').text('No relevant answer found.');
+    $('#answer-steps').text('No relevant answers found.');
   }
 }
 
-// function to display the answer
-function display_answer(item, confidence_score) {
-    // console.log('displaying answer for item:', item);
+// function to display the answers
+function display_answers(results) {
+  $('#answer-container').empty();
 
-    // create a shallow copy of the item to avoid modifying the original object
+  results.forEach(({ item, score }) => {
     const item_copy = { ...item };
-
-    // remove the embeddings property from the item copy
     delete item_copy.embedding;
+    item_copy.confidence_score = score;
 
-    item_copy.confidence_score = confidence_score;
+    let answer_steps_html = '';
+    let related_links_html = '';
 
-    // create a container for the answer
-    //const answer_container = $('#answer-steps');
-    const confidence_score_container = $('#confidence-score');
-    //answer_container.empty();
-    //item.answer_steps.forEach((answer_paragraph) => {
-        // append each paragraph in a <p> tag
-        //answer_container.append(`<p class="answer-paragraph">${answer_paragraph}</p>`);
-    //});
-    //confidence_score_container.html(`<p>Confidence Score: ${confidence_score}</p>`);
+    item_copy.answer_steps.forEach((answer_paragraph) => {
+      answer_steps_html += `<p class="orangetree">${answer_paragraph}</p>`;
+    });
 
-    // clear and display related links
-    //$('#related-links').empty();
+    item_copy.related_links.forEach((link) => {
+      related_links_html += `<p class="appletree"><a href="${link}" target="_blank">${link}</a></p>`;
+    });
 
-    // if (item.related_links && item.related_links.length > 0) {
-    //     $('#related-links').append('<p class="answer-paragraph">Related Links:</p>');
-    //     item.related_links.forEach((link) => {
-    //         $('#related-links').append(`<p class="answer-paragraph"><a href="${link}" target="_blank">${link}</a></p>`);
-    //     });
-    // }
+    const answer_item_html = `
+      <div class="answer">
+        <div class="answer_property" uk-grid>
+          <div class="answer_property_label">
+            <p class="lemontree">Question</p>
+          </div>
+          <div class="answer_property_value uk-width-expand">
+            <p class="appletree">${item_copy.question}</p>
+          </div>
+        </div>
+        <div class="answer_property">
+          <div class="full_width_answer_title">
+            <p class="lemontree">Answer</p>
+          </div>
+          <div class="full_width_answer_content">
+            ${answer_steps_html}
+          </div>
+        </div>
+        <div class="answer_property" uk-grid>
+          <div class="answer_property_label">
+            <p class="lemontree">Category</p>
+          </div>
+          <div class="answer_property_value uk-width-expand">
+            <p class="appletree">${item_copy.category}</p>
+          </div>
+        </div>
+        <div class="answer_property" uk-grid>
+          <div class="answer_property_label">
+            <p class="lemontree">Interface</p>
+          </div>
+          <div class="answer_property_value uk-width-expand">
+            <p class="appletree">${item_copy.interface}</p>
+          </div>
+        </div>
+        <div class="answer_property" uk-grid>
+          <div class="answer_property_label">
+            <p class="lemontree">Related Links</p>
+          </div>
+          <div class="answer_property_value uk-width-expand">
+            ${related_links_html}
+          </div>
+        </div>
+        <div class="answer_property" uk-grid>
+          <div class="answer_property_label">
+            <p class="lemontree">Cosine Similarity</p>
+          </div>
+          <div class="answer_property_value uk-width-expand">
+            <p class="appletree">${score}</p>
+          </div>
+        </div>
+        <div class="answer_property" uk-grid>
+          <div class="answer_property_label">
+            <p class="lemontree">ID</p>
+          </div>
+          <div class="answer_property_value uk-width-expand">
+            <p class="appletree">${item_copy.id}</p>
+          </div>
+        </div>
+        <div class="answer_property" uk-grid>
+          <div class="answer_property_label">
+            <p class="lemontree">Last Updated</p>
+          </div>
+          <div class="answer_property_value uk-width-expand">
+            <p class="appletree">${item_copy.last_updated}</p>
+          </div>
+        </div>
+      </div>
+    `;
 
-    // display the whole object using jquery.json-viewer
-    $('#json-viewer').jsonViewer(item_copy, {collapsed: false, rootCollapsable: true, withQuotes: false, withLinks: true});
-
+    $('#answer-container').append(answer_item_html);
+  });
 }
 
 // function to compute mean pooling of embeddings
-function meanPooling(tokenEmbeddings) {
+function mean_pooling(tokenEmbeddings) {
   const numTokens = tokenEmbeddings.length;
   const embeddingDim = tokenEmbeddings[0].length;
   const sentenceEmbedding = [];
@@ -542,13 +626,42 @@ $(document).on('click', '.question-list-item', (event) => {
 
   
   $(document).on('click', '.uk-tab li', function() {
-    const tab_names = ['post_helper', 'known_issues', 'docs', 'qa', 'videos'];
+    const tab_names = ['post_helper', 'known_issues', 'upcoming_features', 'docs', 'qa', 'qa_data', 'videos', 'ui_explorer', 'glossary'];
       const tab_index = $(this).index();
       const tab_name = tab_names[tab_index];
       if (tab_name) {
           const new_url = `${window.location.origin}${window.location.pathname}?tab=${tab_name}`;
           history.pushState(null, '', new_url);
+          // clear answer container and query input
+          $('#answer-container').empty();
+          $('#query-input').val('');
       }
+  });
+
+  $(document).on('click', '.switcher-tab-link', function(event) {
+    event.preventDefault();
+    const $this = $(event.currentTarget);
+    const tab_name = $this.data('switcher-tab-name');
+    const tab_index = {
+    'post_helper': 0,
+    'known_issues': 1,
+    'upcoming_features': 2,
+    'docs': 3,
+    'qa': 4,
+    'qa_data': 5,
+    'videos': 6,
+    'ui_explorer': 7,
+    'glossary': 8
+    }[tab_name];
+
+    if (tab_index !== undefined) {
+          UIkit.switcher('.uk-tab').show(tab_index);
+      }
+
+      // update the url
+      const new_url = `${window.location.origin}${window.location.pathname}?tab=${tab_name}`;
+      history.pushState(null, '', new_url);
+
   });
 
 $(document).on('click', '#how-does-qa-work', (e) => {
@@ -578,6 +691,15 @@ $(document).on('click', '#how-does-qa-work', (e) => {
   UIkit.modal("#my-modal-overflow-qa-info").show();
 
 
+});
+
+
+$(document).on('click', '#qa-data-json-viewer-copy-button', (e) => {
+  e.preventDefault();
+  const $json_viewer = $('#qa-data-json-viewer');
+  const json_text = $json_viewer.text();
+  navigator.clipboard.writeText(json_text);
+  UIkit.notification("JSON was copied to clipboard!", {status: 'success', timeout: 5000})
 });
 
 

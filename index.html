@@ -65,6 +65,10 @@
     <!-- jquery.json-viewer JS -->
     <script src="js/jquery.json-viewer.js"></script>
 
+    <!-- highlight.js -->
+    <!-- srcery, panda-syntax-dark, nord, nnfx-light, monokai-sublime, isbl-editor-light --> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/styles/isbl-editor-light.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/highlight.min.js"></script>
 
     <!-- Security Headers -->
 
@@ -78,9 +82,13 @@
     <ul uk-tab>
         <li><a href="#">Post Helper</a></li>
         <li><a href="#">Known Issues</a></li>
+        <li><a href="#">Upcoming Features</a></li>
         <li><a href="#">Docs</a></li>
         <li><a href="#">Q&A</a></li>
+        <li><a href="#">Q&A Data</a></li>
         <li><a href="#">Videos</a></li>
+        <li><a href="#">UI Explorer</a></li>
+        <li><a href="#">Glossary</a></li>
     </ul>
     
     <div class="uk-switcher uk-margin">
@@ -258,6 +266,14 @@
 
         </div>
 
+        <!-- Upcoming Features -->
+        <div id="switcher_upcoming_features">
+            <p class="page-description">As well as fixes for <a href="#" class="switcher-tab-link" data-switcher-tab-name="known_issues">known issues</a>, the following features are on the dev teams's to-do list.</p>
+            <ul id="upcoming-features-list">
+                <li>Cursor Status Page</li>
+            </ul>
+</div>
+
         <!-- Docs -->
         <div id="switcher_docs">
             <p class="docs_section_header">General</p>
@@ -289,13 +305,8 @@
     <button id="button_query_qa" class="uk-button uk-button-secondary" type="submit">Search</button><a id="how-does-qa-work">How does this work?</a>
   </div>
 </form>
-<p class="docs_section_header">Answer</p>
-<div id="answer-container">
-<!--<div id="answer-steps"></div>-->
-<div id="confidence-score"></div>
-<!--<div id="related-links"></div>-->
-<div id="json-viewer"></div>
-</div>
+<p class="docs_section_header">Answers <span class="answers_tagline">Top five results with cosine similarity above 0.5</span></p>
+<div id="answer-container"></div>
 
 
 
@@ -310,10 +321,30 @@
 
          </div>
 
+        <!-- Q&A Data -->
+        <div id="switcher_qa_data">
+            <p class="page-description">This is the content of <a href="/data/qa_data.json" target="_blank">qa_data.json</a>.</p>
+            <div id="qa-data-json-viewer-container">
+            <button id="qa-data-json-viewer-copy-button" class="uk-button uk-button-default">Copy</button>
+             <pre id="qa-data-json-viewer"></pre>
+            </div>
+        </div>
+
         <!-- Videos  -->
         <div id="switcher_videos">
             <div id="media-player-container"></div>
         </div>
+
+        <!-- UI Explorer -->
+        <div id="switcher_ui_explorer">
+            <p class="page-description">To do.</p>
+        </div>
+        
+        <!-- Glossary -->
+        <div id="switcher_glossary">
+            <p class="page-description">To do.</p>
+        </div>
+        
     </div>
 
 </div>
