@@ -77,6 +77,14 @@ span#qa_answers_result_count_container {
     margin-left: auto; /* push to the right */
 }
 
+/* new styles for the loading indicator */
+#loading_indicator {
+    margin-left: auto;
+    background: lime;
+    padding: 5px 25px;
+    display: none;
+}
+
 p.question-pane-title {
     background: #525252;
     padding: 5px 10px;
@@ -617,4 +625,21 @@ span#qa_answers_result_count {
     width: 40px;
     text-align: center;
     border: 1px solid #333;
+}
+
+p.generate-qa-header {
+    background: #eee;
+    padding: 5px 10px;
+    font-weight: 600;
+}
+
+.uk-modal-close-outside {
+    color: #fff;
+    cursor: pointer;
+}
+
+button#add-answer-step, 
+button#add-related-link {
+    margin-top: 25px;
+    margin-bottom: 15px;
 }

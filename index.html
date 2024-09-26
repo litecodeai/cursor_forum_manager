@@ -70,6 +70,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/styles/isbl-editor-light.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/highlight.min.js"></script>
 
+    
     <!-- Security Headers -->
 
 </head>
@@ -301,8 +302,12 @@
       <input class="uk-input" type="text" id="query-input" placeholder="Search embedded questions...">
     </div>
   </div>
-  <div class="uk-margin">
-    <button id="button_query_qa" class="uk-button uk-button-secondary" type="submit">Search</button><a id="how-does-qa-work">How does this work?</a>
+  <div class="uk-margin" style="display: flex; justify-content: space-between; align-items: center;">
+    <div>
+      <button id="button_query_qa" class="uk-button uk-button-secondary" type="submit">Search</button>
+      <a id="how-does-qa-work">How does this work?</a>
+    </div>
+    <span id="loading_indicator">Searching...</span>
   </div>
 </form>
 <p class="qa_section_header">Answers <span class="answers_tagline">Top five results with cosine similarity above 0.5</span> <span id="qa_answers_result_count_container">Result Count:  <span id="qa_answers_result_count">&nbsp;</span></span></p>
@@ -323,7 +328,9 @@
 
         <!-- Q&A Data -->
         <div id="switcher_qa_data">
+            <div id="my-modal-overflow-qa-generate-qa" class="uk-flex-top" uk-modal></div>
             <p class="page-description">This is the content of <a href="/data/qa_data.json" target="_blank">qa_data.json</a>.</p>
+            <p class="page-description"><a id="open-qa-data-generate-modal" href="">Generate a Q&A</a>.</p>
             <div id="qa-data-json-viewer-container">
             <button id="qa-data-json-viewer-copy-button" class="uk-button uk-button-default">Copy</button>
              <pre id="qa-data-json-viewer"></pre>

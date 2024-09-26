@@ -1,6 +1,8 @@
 // Import the pipeline function and env from transformers
 import { pipeline, env } from 'https://cdn.jsdelivr.net/npm/@xenova/transformers/dist/transformers.min.js';
 
+import { format } from 'https://cdn.jsdelivr.net/npm/date-fns@2.28.0/esm/index.js';
+
 // Disable local model checking
 env.allowLocalModels = false;
 
@@ -464,7 +466,13 @@ async function handle_query(query) {
   if (top_results.length > 0) {
     display_answers(top_results, top_results.length);
   } else {
-    $('#answer-steps').text('No relevant answers found.');
+    $('#loading_indicator').hide();
+    // clear the answer container
+    $('#answer-container').empty();
+    // show result count
+    $('#qa_answers_result_count').text('0');
+    // show no results message
+    UIkit.notification('No relevant answers found.', {status: 'warning', timeout: 5000});
   }
 }
 
@@ -557,6 +565,7 @@ function display_answers(results, result_count) {
       </div>
     `;
 
+    $('#loading_indicator').hide();
     $('#answer-container').append(answer_item_html);
     $('#qa_answers_result_count').text(`${result_count}`);
   });
@@ -582,6 +591,7 @@ function mean_pooling(tokenEmbeddings) {
 // event listener for the query form
 $(document).on('click', '#button_query_qa', async (event) => {
   event.preventDefault();
+  $('#loading_indicator').show();
   const query = $('#query-input').val().trim();
   if (query) {
     //$('#answer-container').text('Loading...');
@@ -705,3 +715,185 @@ $(document).on('click', '#qa-data-json-viewer-copy-button', (e) => {
 });
 
 
+$(document).on('click', '#open-qa-data-generate-modal', (e) => {
+  e.preventDefault();
+
+  const modal_html = `
+  <div id="qa-data-generate-modal" class="uk-modal-dialog uk-margin-auto-vertical">
+    <button class="uk-modal-close-outside" type="button" uk-close></button>
+    <div class="uk-modal-body" uk-overflow-auto>
+      <form id="qa-data-generate-form">
+        <div class="uk-margin">
+          <select class="uk-select" id="interface" required>
+            <option value="">select an interface</option>
+            <option value="ctrl_k">Ctrl + K</option>
+            <option value="ctrl_l">Ctrl + L</option>
+            <option value="ctrl_i">Ctrl + I</option>
+            <option value="not_applicable">Not Applicable</option>
+          </select>
+        </div>
+        <div class="uk-margin">
+          <select class="uk-select" id="category" required>
+            <option value="">select a category</option>
+            <option value="bug">Bug</option>
+            <option value="error">Error</option>
+            <option value="general">General</option>
+            <option value="glossary">Glossary</option>
+          </select>
+        </div>
+        <div class="uk-margin">
+          <input class="uk-input" type="text" id="question" placeholder="Question" required>
+        </div>
+        <p class="generate-qa-header">Answer Steps</p>
+        <div class="uk-margin">
+          <div id="answer-steps-container" uk-sortable="handle: .uk-sortable-handle">
+            <div class="answer-step-container uk-margin uk-grid-small" uk-grid>
+              <div class="uk-width-auto">
+                <span class="uk-sortable-handle uk-margin-small-right uk-text-center" uk-icon="icon: table"></span>
+              </div>
+              <div class="uk-width-expand">
+                <input type="text" class="uk-input" placeholder="answer step" required>
+              </div>
+              <div class="uk-width-auto">
+                <button class="uk-button uk-button-default remove-answer-step" type="button">Remove</button>
+              </div>
+            </div>
+          </div>
+          <button id="add-answer-step" class="uk-button uk-button-small">Add Step</button>
+        </div>
+        <p class="generate-qa-header">Related Links</p>
+        <div class="uk-margin">
+          <div id="related-links-container" uk-sortable="handle: .uk-sortable-handle">
+            <div class="related-link-container uk-margin uk-grid-small" uk-grid>
+              <div class="uk-width-auto">
+                <span class="uk-sortable-handle uk-margin-small-right uk-text-center" uk-icon="icon: table"></span>
+              </div>
+              <div class="uk-width-expand">
+                <input type="text" class="uk-input" placeholder="related link" required>
+              </div>
+              <div class="uk-width-auto">
+                <button class="uk-button uk-button-default remove-related-link" type="button">Remove</button>
+              </div>
+            </div>
+          </div>
+          <button id="add-related-link" class="uk-button uk-button-small">Add Link</button>
+        </div>
+      </form>
+    </div>
+    <div class="uk-modal-footer uk-text-right">
+      <button class="uk-button uk-button-secondary uk-width-1-1" id="qa-data-generate">Copy JSON to Clipboard</button>
+    </div>
+  </div>
+  `;
+
+  $('#my-modal-overflow-qa-generate-qa').html(modal_html);
+  UIkit.modal("#my-modal-overflow-qa-generate-qa").show();
+});
+
+
+$(document).on('click', '#add-answer-step', function() {
+
+  const new_input_html = `
+  <div class="answer-step-container uk-margin uk-grid-small" uk-grid>
+  <div class="uk-width-auto">
+    <span class="uk-sortable-handle uk-margin-small-right uk-text-center" uk-icon="icon: table"></span>
+  </div>
+  <div class="uk-width-expand">
+    <input type="text" class="uk-input" placeholder="answer step" required>
+  </div>
+  <div class="uk-width-auto">
+    <button class="uk-button uk-button-default remove-answer-step" type="button">Remove</button>
+  </div>
+</div>`;
+
+  $('#answer-steps-container').append(new_input_html);
+
+});
+
+
+$(document).on('click', '#add-related-link', function() {
+
+  const new_input_html = `
+  <div class="related-link-container uk-margin uk-grid-small" uk-grid>
+  <div class="uk-width-auto">
+    <span class="uk-sortable-handle uk-margin-small-right uk-text-center" uk-icon="icon: table"></span>
+  </div>
+  <div class="uk-width-expand">
+    <input type="text" class="uk-input" placeholder="related link" required>
+  </div>
+  <div class="uk-width-auto">
+    <button class="uk-button uk-button-default remove-related-link" type="button">Remove</button>
+  </div>
+</div>`;
+
+  $('#related-links-container').append(new_input_html);
+
+});
+
+
+
+$(document).on('click', '.remove-answer-step', function(event) {
+  event.preventDefault();
+  console.log('remove-answer-step');
+  const $answer_step_container = $('.answer-step-container');
+  if ($answer_step_container.length > 1) {
+    $(this).closest('.answer-step-container').remove();
+  } else {
+    UIkit.notification("Cannot remove last answer step!", {status: 'warning', timeout: 3000});
+  }
+});
+
+
+$(document).on('click', '.remove-related-link', function(event) {
+  event.preventDefault();
+  console.log('remove-related-link');
+  const $related_link_container = $('.related-link-container');
+  
+  if ($related_link_container.length > 1) {
+    $(this).closest('.related-link-container').remove();
+  } else {
+    UIkit.notification("Cannot remove last related link!", {status: 'warning', timeout: 3000});
+  }
+});
+
+
+$(document).on('click', '#qa-data-generate', function(event) {
+  event.preventDefault();
+  
+  // run form validations
+  const $form = $('#qa-data-generate-form');
+  if (!$form[0].checkValidity()) {
+    $form[0].reportValidity();
+    return;
+  }
+
+  const id = "----increment-this-id-for-each-new-qa----";
+  const interface_val = $('#interface').val();
+  const category = $('#category option:selected').val();
+  const question = $('#question option:selected').val();
+  const last_updated = format(new Date(), 'dd/MM/yy');
+
+  const answer_steps = $('#answer-steps-container input').map(function() {
+      return $(this).val();
+  }).get();
+
+  const related_links = $('#related-links-container input').map(function() {
+      return $(this).val();
+  }).get();
+
+  const result = {
+      id: id,
+      interface: interface_val,
+      category: category,
+      question: question,
+      answer_steps: answer_steps,
+      related_links: related_links,
+      last_updated: last_updated
+  };
+
+  navigator.clipboard.writeText(JSON.stringify(result, null, 2)).then(function() {
+    UIkit.notification("Q&A was copied to clipboard!", {status: 'success', timeout: 5000})
+  }).catch(function(err) {
+    console.error('could not copy text: ', err);
+  });
+});
