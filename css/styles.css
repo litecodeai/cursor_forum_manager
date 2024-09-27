@@ -129,7 +129,8 @@ p.question-pane-title {
 a#how-does-qa-work,
 ul.test-search-terms a,
 div#answer-container a,
-a#view-add-qa {
+a#view-add-qa,
+ul.page-description-list li a {
     text-decoration: underline;
 }
 
