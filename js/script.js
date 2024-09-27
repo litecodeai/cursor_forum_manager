@@ -897,3 +897,14 @@ $(document).on('click', '#qa-data-generate', function(event) {
     console.error('could not copy text: ', err);
   });
 });
+
+
+$(document).on('click', '.open-ui-explorer-gallery', (event) => {
+  event.preventDefault();
+  const $this = $(event.currentTarget);
+  const index = $this.data('gallery-index');
+  console.log('index:', index);
+  UIkit.lightbox('#ui_explorer_gallery').show(index);
+});
+
+
