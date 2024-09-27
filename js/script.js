@@ -50,19 +50,19 @@ $(document).on("click", "#button_generate_forum_post_text", (e) => {
 
     const select_interface_options_text = $("#select-interface-options option:selected").map(function() {
         return $(this).text();
-    }).get().join(', ') || "Not Provided";
+    }).get().join(',\n') || "Not Provided";
 
     const select_language_model_options_text = $("#select-language-model-options option:selected").map(function() {
         return $(this).text();
-    }).get().join(', ') || "Not Provided";
+    }).get().join(',\n') || "Not Provided";
 
     const select_symbols_options_text = $("#select-symbols-options option:selected").map(function() {
         return $(this).text();
-    }).get().join(', ') || "Not Provided";
+    }).get().join(',\n') || "Not Provided";
 
     const select_submission_options_text = $("#select-submission-options option:selected").map(function() {
         return $(this).text();
-    }).get().join(', ') || "Not Provided";
+    }).get().join(',\n') || "Not Provided";
 
 
     // checkbox values
