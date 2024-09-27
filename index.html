@@ -305,7 +305,7 @@
   <div class="uk-margin" style="display: flex; justify-content: space-between; align-items: center;">
     <div>
       <button id="button_query_qa" class="uk-button uk-button-secondary" type="submit">Search</button>
-      <a id="how-does-qa-work">How does this work?</a>
+      <a id="how-does-qa-work">How does this work?</a>    <a id="view-add-qa" class="switcher-tab-link" data-switcher-tab-name="qa_data">View and add Q&A data</a>
     </div>
     <span id="loading_indicator">Searching...</span>
   </div>
@@ -330,6 +330,7 @@
         <div id="switcher_qa_data">
             <div id="my-modal-overflow-qa-generate-qa" class="uk-flex-top" uk-modal></div>
             <p class="page-description">This is the content of <a href="/data/qa_data.json" target="_blank">qa_data.json</a>.</p>
+            <p class="page-description">The <code>question</code> property of each object is embedded and used for search on the <a href="#" class="switcher-tab-link" data-switcher-tab-name="qa">Q&A page</a>.</p>
             <p class="page-description"><a id="open-qa-data-generate-modal" href="">Generate a Q&A</a>.</p>
             <div id="qa-data-json-viewer-container">
             <button id="qa-data-json-viewer-copy-button" class="uk-button uk-button-default">Copy</button>

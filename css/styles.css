@@ -128,11 +128,13 @@ p.question-pane-title {
 .triage-helper-related-topic,
 a#how-does-qa-work,
 ul.test-search-terms a,
-div#answer-container a {
+div#answer-container a,
+a#view-add-qa {
     text-decoration: underline;
 }
 
-a#how-does-qa-work {
+a#how-does-qa-work,
+a#view-add-qa {
     margin-left: 20px;
     text-transform: lowercase;
     font-size: 14px;
