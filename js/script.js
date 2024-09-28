@@ -775,7 +775,7 @@ $(document).on('click', '#how-does-qa-work', (e) => {
   <ul>
       <li>Embeds the query using the same model as the question embeddings</li>
       <li>Performs a cosine similarity search on the <code>embeddings</code> property</li>
-      <li>Returns the item with the highest cosine similarity score</li>
+      <li>Returns the top five results with cosine similarity above 0.5</li>
   </ul>
   <p class="page-description">This is a client-side search on <code>qa_data_with_embeddings.json</code>.</p>
   </div>
