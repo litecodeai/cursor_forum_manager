@@ -4,6 +4,7 @@
         "id": 1,
         "interface": "Ctrl + L",
         "category": "Error or Bug",
+        "glossary_category": "Not Applicable",
         "glossary_term": "Not Applicable",
         "question": "When using <code>Ctrl</code> + <code>L</code>, I submit my prompt and I don't get a response, what should I do?",
         "answer_steps": [
@@ -24,6 +25,7 @@
         "id": 2,
         "interface": "Ctrl + L",
         "category": "Error or Bug",
+        "glossary_category": "Not Applicable",
         "glossary_term": "Not Applicable",
         "question": "When using <code>Ctrl</code> + <code>L</code>, I submit my prompt, get a response, click <code>Apply</code> and the changes are not applied, what should I do?",
         "answer_steps": [
@@ -42,6 +44,7 @@
         "id": 3,
         "interface": "Ctrl + L",
         "category": "Information - Humorous",
+        "glossary_category": "Not Applicable",
         "glossary_term": "Not Applicable",
         "question": "I want to go to a waterfall, what should I do?",
         "answer_steps": [
@@ -57,6 +60,7 @@
         "id": 4,
         "interface": "Ctrl + L",
         "category": "Information - Humorous",
+        "glossary_category": "Not Applicable",
         "glossary_term": "Not Applicable",
         "question": "Where can I get a red car?",
         "answer_steps": [
@@ -73,6 +77,7 @@
         "id": 5,
         "interface": "Ctrl + L",
         "category": "Information - Humorous",
+        "glossary_category": "Not Applicable",
         "glossary_term": "Not Applicable",
         "question": "Where can I find a purple cow?",
         "answer_steps": [
@@ -88,10 +93,11 @@
         "id": 6,
         "interface": "Ctrl + L",
         "category": "Glossary",
+        "glossary_category": "Ctrl + L",
         "glossary_term": "Ctrl + L",
-        "question": "What is Ctrl + L?",
+        "question": "What is <code>Ctrl</code> + <code>L</code>?",
         "answer_steps": [
-            "Ctrl + L is the keyboard shortcut that opens the Cursor Chat pane"
+            "<code>Ctrl</code> + <code>L</code> is the keyboard shortcut that opens the Cursor Chat pane."
         ],
         "related_links": [
             "https://docs.cursor.com/chat/overview"
@@ -103,10 +109,15 @@
         "id": 7,
         "interface": "Not Applicable",
         "category": "Glossary",
+        "glossary_category": "Information - Service",
         "glossary_term": "Cursor",
         "question": "What is Cursor?",
         "answer_steps": [
-            "Cursor is a fork of VS Code which has additional built in AI features"
+            "Cursor is a fork of VS Code which has additional built in AI features.",
+            "This functionality is accessed via three user interfaces.",
+            "<code>Ctrl</code> + <code>K</code>, accessible via the <code>Editor</code> and <code>Terminal</code>, used for quick code and command generation.",
+            "<code>Ctrl</code> + <code>L</code>, accessible via the <code>Side Bar</code>, used for AI chat, where suggested edits can be applied to <code>Editor</code> code.",
+            "<code>Ctrl</code> + <code>I</code>, accessible via three views (<code>Bar</code>, <code>Pane</code> and <code>Control Panel</code>), used for multi-file creation and editing."
         ],
         "related_links": [
             "https://www.cursor.com"
@@ -118,6 +129,7 @@
         "id": 8,
         "interface": "Not Applicable",
         "category": "Information - Service",
+        "glossary_category": "Not Applicable",
         "glossary_term": "Not Applicable",
         "question": "Where is the Cursor Changelog?",
         "answer_steps": [
@@ -133,10 +145,12 @@
         "id": 9,
         "interface": "Ctrl + I",
         "category": "Glossary",
+        "glossary_category": "Ctrl + I",
         "glossary_term": "Accept All",
-        "question": "What is Accept All in Composer?",
+        "question": "What is <code>Accept All</code> in Composer?",
         "answer_steps": [
-            "It adds all suggested changes to the relevant files, files must then be saved manually to apply them."
+            "Clicking on <code>Accept All</code> in Composer adds all suggested changes to the relevant files.",
+            "Files must then be saved manually to save the changes."
         ],
         "related_links": [
             "https://docs.cursor.com"
@@ -146,8 +160,25 @@
       },
       {
         "id": 10,
+        "interface": "Ctrl + I",
+        "category": "Glossary",
+        "glossary_category": "Ctrl + I",
+        "glossary_term": "Reject All",
+        "question": "What is <code>Reject All</code> in Composer?",
+        "answer_steps": [
+            "Clicking on <code>Reject All</code> in Composer rejects all suggested changes."
+        ],
+        "related_links": [
+            "https://docs.cursor.com"
+        ],
+        "status": "Answered",
+        "last_updated": "2024-09-28"
+      },
+      {
+        "id": 11,
         "interface": "Not Applicable",
         "category": "Information - Accounts",
+        "glossary_category": "Not Applicable",
         "glossary_term": "Not Applicable",
         "question": "Do the 2,000 completions in the hobby tier refresh each month?",
         "answer_steps": ["Pending answer."],
@@ -156,19 +187,38 @@
         "last_updated": "2024-09-28"
       },
       {
-        "id": 11,
+        "id": 12,
         "interface": "Not Applicable",
-        "category": "Information - Company",
-        "glossary_term": "Not Applicable",
-        "question": "Who makes Cursor?",
+        "category": "Glossary",
+        "glossary_category": "Information - Company",
+        "glossary_term": "Anysphere",
+        "question": "Who is Anysphere?",
         "answer_steps": [
-            "Cursor is made by Anysphere."
+            "Anysphere is the company that makes Cursor."
         ],
         "related_links": [
             "https://anysphere.inc"
         ],
         "status": "Answered",
         "last_updated": "2024-09-28"
+      },
+      {
+        "id": 13,
+        "interface": "Ctrl + I",
+        "category": "Glossary",
+        "glossary_category": "Ctrl + I",
+        "glossary_term": "Ctrl + I",
+        "question": "What is <code>Ctrl</code> + <code>I</code>?",
+        "answer_steps": [
+            "<code>Ctrl</code> + <code>I</code> is the keyboard shortcut that opens Composer.",
+            "Composer has three views - <code>Bar</code>, <code>Pane</code> and <code>Control Panel</code>.",
+            "It is used for multi-file creation and editing."
+        ],
+        "related_links": [
+            "https://docs.cursor.com/chat/overview"
+        ],
+        "status": "Answered",
+        "last_updated": "2024-09-25"
       }
     ]
   }

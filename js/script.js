@@ -381,18 +381,81 @@ const load_video = (src, type) => {
 let model;
 let qa_data;
 
-// Use a promise to ensure qa_data is loaded
-let qa_data_loaded = new Promise((resolve, reject) => {
-  $.getJSON('data/qa_data_with_embeddings.json', function(data) {
-    qa_data = data.qa_data;
-    for (const item of qa_data) {
-      $("#question-list").append(`<li class="question-list-item">${item.question}</li>`);
-    }
-    resolve();
-  });
-});
+// function to fetch qa_data
+async function load_qa_data() {
+  const response = await fetch('data/qa_data_with_embeddings.json');
+  const data = await response.json();
+  qa_data = data.qa_data;
 
-await qa_data_loaded; // Ensure data is loaded
+  // call the functions to process and display the data sequentially
+  await load_qa_data_to_questions_list(qa_data);
+  await load_qa_data_to_glossary(qa_data);
+}
+
+// function to list all questions alphabetically
+async function load_qa_data_to_questions_list(qa_data) {
+  // sort qa_data by question
+  qa_data.sort((a, b) => a.question.localeCompare(b.question));
+
+  // render the sorted questions
+  for (const item of qa_data) {
+    $("#question-list").append(`<li class="question-list-item">${item.question}</li>`);
+  }
+}
+
+// function to list glossary items grouped by category and sorted alphabetically
+async function load_qa_data_to_glossary(qa_data) {
+  // filter and group by glossary_category
+  const grouped_data = qa_data
+    .filter(item => item.category === "Glossary")
+    .reduce((acc, item) => {
+      if (!acc[item.glossary_category]) {
+        acc[item.glossary_category] = [];
+      }
+      acc[item.glossary_category].push(item);
+      return acc;
+    }, {});
+
+  // sort the categories using the default sorting function
+  const sorted_categories = Object.keys(grouped_data).sort((a, b) => a.localeCompare(b));
+
+  // sort each group by glossary_term
+  for (const category of sorted_categories) {
+    grouped_data[category].sort((a, b) => a.glossary_term.localeCompare(b.glossary_term));
+  }
+
+  // render the grouped and sorted glossary items
+  for (const category of sorted_categories) {
+    $("#glossary-terms-container").append(`<p class="glossary-section-header">${category}</p>`);
+    for (const item of grouped_data[category]) {
+      let answer_steps_html = '';
+      item.answer_steps.forEach((answer_paragraph, index) => {
+        if (index === 0) {
+          answer_steps_html += `<p class="glossary_answer"><span class="glossary_a">A:</span>${answer_paragraph}</p>`;
+        } else {
+          answer_steps_html += `<p class="glossary_answer">${answer_paragraph}</p>`;
+        }
+      });
+
+      $("#glossary-terms-container").append(`
+        <p class="glossary_term" uk-toggle="target: +.glossary_term_container">
+          <span class="glossary_toggle" uk-icon="icon: plus; ratio: 1"></span> ${item.glossary_term}
+        </p>
+        <div class="glossary_term_container" hidden>
+          <p class="glossary_question"><span class="glossary_q">Q:</span>${item.question}</p>
+          ${answer_steps_html}
+        </div>
+      `);
+    }
+  }
+
+}
+
+// call the function to load data
+await load_qa_data();
+// open the first glossary term - dodgy mcdodge
+$('.glossary_term').first().click();
+
 
 // function to load the model
 async function load_model() {
@@ -1007,3 +1070,14 @@ $(document).on('click', '.open-ui-explorer-gallery', (event) => {
 });
 
 
+$(document).on('click', '.glossary_term', function() {
+  const $toggleIcon = $(this).find('.glossary_toggle');
+  const $container = $(this).next('.glossary_term_container');
+
+  // toggle the icon
+  if ($container.is(':hidden')) {
+    $toggleIcon.attr('uk-icon', 'icon: plus; ratio: 1');
+  } else {
+    $toggleIcon.attr('uk-icon', 'icon: minus; ratio: 1');
+  }
+});

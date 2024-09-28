@@ -702,3 +702,38 @@ table#status_table td {
     border-right: 1px solid #333;
 }
 
+.glossary_term {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    background: #eee;
+    margin: 15px 0px 0px 0px;
+    padding: 5px 10px;
+  }
+
+.glossary_toggle {
+      margin-right: 8px; /* Adjust as needed */
+}
+
+.glossary_term_container {
+    background: #f8f8f8;
+    padding: 25px 20px 10px 20px;
+}
+
+span.glossary_q,
+span.glossary_a {
+    font-weight: 600;
+    margin-right: 15px;
+    font-size: 20px;
+}
+
+p.glossary-section-header {
+    color: #cacaca;
+    font-size: 24px;
+    border-bottom: 1px solid #cacaca;
+    margin-top: 35px;
+}
+
+p.glossary-section-header:first-child {
+    margin-top: 30px;
+}
