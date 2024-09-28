@@ -702,6 +702,11 @@ table#status_table td {
     border-right: 1px solid #333;
 }
 
+table#status_table td {
+    padding: 15px 12px;
+}
+
+
 .glossary_term {
     cursor: pointer;
     display: flex;
