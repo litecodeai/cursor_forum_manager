@@ -83,6 +83,7 @@
     <ul uk-tab>
         <li><a href="#">Post Helper</a></li>
         <li><a href="#">Known Issues</a></li>
+        <li><a href="#">Status</a></li>
         <li><a href="#">Upcoming Features</a></li>
         <li><a href="#">Docs</a></li>
         <li><a href="#">Q&A</a></li>
@@ -90,6 +91,7 @@
         <li><a href="#">Videos</a></li>
         <li><a href="#">UI Explorer</a></li>
         <li><a href="#">Glossary</a></li>
+        <li><a href="#">User Testing</a></li>
     </ul>
     
     <div class="uk-switcher uk-margin">
@@ -275,11 +277,76 @@
 
         </div>
 
+        <!-- Status -->
+        <div id="switcher_status">
+            <table id="status_table" class="uk-table uk-table-divider">
+                <tbody>
+                    <tr>
+                        <td colspan="2" class="status_section">LLMs</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="status_subsection">Cursor</td>
+                    </tr>
+                    <tr>
+                        <td>Cursor</td>
+                        <td class="status_operational">Operational</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="status_subsection">Third Party</td>
+                    </tr>
+                    <tr>
+                        <td>OpenAI</td>
+                        <td class="status_operational">Operational</td>
+                    </tr>
+                    <tr>
+                        <td>Anthropic</td>
+                        <td class="status_some_issues">Some Issues</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="status_section">Vector Databases</td>
+                    </tr>
+                    <tr>
+                        <td>Turbopuffer</td>
+                        <td class="status_operational">Operational</td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+<h3 class="uk-heading-divider">Past Incidents</h1>
+
+<h4 class="uk-heading-divider">28/09/24</h3>
+
+<p class="page-description">No incidents reported.</p>
+
+<h4 class="uk-heading-divider">27/09/24</h3>
+
+<p class="slight_freakout">Increased timeouts in central region.</p>
+
+<p class="page-description"><strong>Resolved</strong> - This incident has been resolved.</p>
+<p class="page-description-time-stamp"><small>Sep 27, 18:00 UTC</small></p>
+
+<p class="page-description"><strong>Monitoring</strong> - A fix has been implemented and we are monitoring the results.</p>
+<p class="page-description-time-stamp"><small>Sep 27, 17:00 UTC</small></p>
+
+<p class="page-description"><strong>Identified</strong> - The issue has been identified and a fix is being implemented.</p>
+<p class="page-description-time-stamp"><small>Sep 27, 16:00 UTC</small></p>
+
+<p class="page-description"><strong>Investigating</strong> - We are currently investigating some timeout issues.</p>   
+<p class="page-description-time-stamp"><small>Sep 27, 15:00 UTC</small></p>
+
+<h4 class="uk-heading-divider">26/09/24</h3>
+
+<p class="page-description">No incidents reported.</p>
+
+        </div>
+
         <!-- Upcoming Features -->
         <div id="switcher_upcoming_features">
             <p class="page-description">As well as fixes for <a href="#" class="switcher-tab-link" data-switcher-tab-name="known_issues">known issues</a>, the following features are on the dev teams's to-do list.</p>
             <ul id="upcoming-features-list">
                 <li>Cursor Status Page</li>
+                <li>Font Resizing of <code>Ctrl</code> + <code>L</code> and <code>Ctrl</code> + <code>I</code> Prompts, Responses and Code Blocks</li>
             </ul>
 </div>
 
@@ -339,7 +406,8 @@
             <div id="my-modal-overflow-qa-generate-qa" class="uk-flex-top" uk-modal></div>
             <p class="page-description">This is the content of <a href="/data/qa_data.json" target="_blank">qa_data.json</a>.</p>
             <p class="page-description">The <code>question</code> property of each object is embedded and used for search on the <a href="#" class="switcher-tab-link" data-switcher-tab-name="qa">Q&A page</a>.</p>
-            <p class="page-description"><a id="open-qa-data-generate-modal" href="">Generate a Q&A</a>.</p>
+            <p class="page-description"><a id="open-qa-data-generate-modal">Generate a Question and Answer</a>.</p>
+            <p class="page-description"><a id="open-question_only-data-generate-modal">Generate a Question only</a>.</p>
             <div id="qa-data-json-viewer-container">
             <button id="qa-data-json-viewer-copy-button" class="uk-button uk-button-default">Copy</button>
              <pre id="qa-data-json-viewer"></pre>
@@ -380,6 +448,43 @@
             <p class="page-description">To do.</p>
         </div>
         
+        <!-- User Testing -->
+        <div id="switcher_user_testing">
+            <p class="docs_section_header">Ctrl + K</p>
+            <p class="page-description">First Test Case:</p>
+            <ul class="page-description-list">
+                <li>Do this first.</li>
+                <li>Do this second.</li>
+                <li>Do this third.</li>
+            </ul>
+            <p class="page-description">What you should see:</p>
+            <ul class="page-description-list">
+                <li>You should see this.</li>
+            </ul>
+            <p class="docs_section_header">Ctrl + L</p>
+            <p class="page-description">First Test Case:</p>
+            <ul class="page-description-list">
+                <li>Do this first.</li>
+                <li>Do this second.</li>
+                <li>Do this third.</li>
+            </ul>
+            <p class="page-description">What you should see:</p>
+            <ul class="page-description-list">
+                <li>You should see this.</li>
+            </ul>
+            <p class="docs_section_header">Ctrl + I</p>
+            <p class="page-description">First Test Case:</p>
+            <ul class="page-description-list">
+                <li>Do this first.</li>
+                <li>Do this second.</li>
+                <li>Do this third.</li>
+            </ul>
+            <p class="page-description">What you should see:</p>
+            <ul class="page-description-list">
+                <li>You should see this.</li>
+            </ul>
+        </div>
+
     </div>
 
 </div>

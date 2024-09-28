@@ -174,13 +174,15 @@ function handle_url_switcher() {
         const tab_index = {
             'post_helper': 0,
             'known_issues': 1,
-            'upcoming_features': 2,
-            'docs': 3,
-            'qa': 4,
-            'qa_data': 5,
-            'videos': 6,
-            'ui_explorer': 7,
-            'glossary': 8
+            'status': 2,
+            'upcoming_features': 3,
+            'docs': 4,  
+            'qa': 5,
+            'qa_data': 6,
+            'videos': 7,
+            'ui_explorer': 8,
+            'glossary': 9,
+            'user_testing': 10
         }[tab];
 
         if (tab_index !== undefined) {
@@ -516,6 +518,14 @@ function display_answers(results, result_count) {
         </div>
         <div class="answer_property" uk-grid>
           <div class="answer_property_label">
+            <p class="lemontree">Interface</p>
+          </div>
+          <div class="answer_property_value uk-width-expand">
+            <p class="appletree">${item_copy.interface}</p>
+          </div>
+        </div>
+        <div class="answer_property" uk-grid>
+          <div class="answer_property_label">
             <p class="lemontree">Category</p>
           </div>
           <div class="answer_property_value uk-width-expand">
@@ -524,10 +534,10 @@ function display_answers(results, result_count) {
         </div>
         <div class="answer_property" uk-grid>
           <div class="answer_property_label">
-            <p class="lemontree">Interface</p>
+            <p class="lemontree">Glossary Term</p>
           </div>
           <div class="answer_property_value uk-width-expand">
-            <p class="appletree">${item_copy.interface}</p>
+            <p class="appletree">${item_copy.glossary_term}</p>
           </div>
         </div>
         <div class="answer_property" uk-grid>
@@ -552,6 +562,14 @@ function display_answers(results, result_count) {
           </div>
           <div class="answer_property_value uk-width-expand">
             <p class="appletree">${item_copy.id}</p>
+          </div>
+        </div>
+        <div class="answer_property" uk-grid>
+          <div class="answer_property_label">
+            <p class="lemontree">Status</p>
+          </div>
+          <div class="answer_property_value uk-width-expand">
+            <p class="appletree">${item_copy.status}</p>
           </div>
         </div>
         <div class="answer_property" uk-grid>
@@ -637,7 +655,7 @@ $(document).on('click', '.question-list-item', (event) => {
 
   
   $(document).on('click', '.uk-tab li', function() {
-    const tab_names = ['post_helper', 'known_issues', 'upcoming_features', 'docs', 'qa', 'qa_data', 'videos', 'ui_explorer', 'glossary'];
+    const tab_names = ['post_helper', 'known_issues', 'status', 'upcoming_features', 'docs', 'qa', 'qa_data', 'videos', 'ui_explorer', 'glossary', 'user_testing'];
       const tab_index = $(this).index();
       const tab_name = tab_names[tab_index];
       if (tab_name) {
@@ -657,13 +675,15 @@ $(document).on('click', '.question-list-item', (event) => {
     const tab_index = {
     'post_helper': 0,
     'known_issues': 1,
-    'upcoming_features': 2,
-    'docs': 3,
-    'qa': 4,
-    'qa_data': 5,
-    'videos': 6,
-    'ui_explorer': 7,
-    'glossary': 8
+    'status': 2,    
+    'upcoming_features': 3,
+    'docs': 4,
+    'qa': 5,
+    'qa_data': 6,
+    'videos': 7,
+    'ui_explorer': 8,
+    'glossary': 9,
+    'user_testing': 10
     }[tab_name];
 
     if (tab_index !== undefined) {
@@ -724,7 +744,7 @@ $(document).on('click', '#open-qa-data-generate-modal', (e) => {
     <div class="uk-modal-body" uk-overflow-auto>
       <form id="qa-data-generate-form">
         <div class="uk-margin">
-          <select class="uk-select" id="interface" required>
+          <select class="uk-select" id="interface_qa" required>
             <option value="">select an interface</option>
             <option value="ctrl_k">Ctrl + K</option>
             <option value="ctrl_l">Ctrl + L</option>
@@ -733,7 +753,7 @@ $(document).on('click', '#open-qa-data-generate-modal', (e) => {
           </select>
         </div>
         <div class="uk-margin">
-          <select class="uk-select" id="category" required>
+          <select class="uk-select" id="category_qa" required>
             <option value="">select a category</option>
             <option value="bug">Bug</option>
             <option value="error">Error</option>
@@ -742,7 +762,7 @@ $(document).on('click', '#open-qa-data-generate-modal', (e) => {
           </select>
         </div>
         <div class="uk-margin">
-          <input class="uk-input" type="text" id="question" placeholder="Question" required>
+          <input class="uk-input" type="text" id="question_qa" placeholder="Question" required>
         </div>
         <p class="generate-qa-header">Answer Steps</p>
         <div class="uk-margin">
@@ -782,6 +802,47 @@ $(document).on('click', '#open-qa-data-generate-modal', (e) => {
     </div>
     <div class="uk-modal-footer uk-text-right">
       <button class="uk-button uk-button-secondary uk-width-1-1" id="qa-data-generate">Copy JSON to Clipboard</button>
+    </div>
+  </div>
+  `;
+
+  $('#my-modal-overflow-qa-generate-qa').html(modal_html);
+  UIkit.modal("#my-modal-overflow-qa-generate-qa").show();
+});
+
+$(document).on('click', '#open-question_only-data-generate-modal', (e) => {
+  e.preventDefault();
+
+  const modal_html = `
+  <div id="qa-data-generate-modal" class="uk-modal-dialog uk-margin-auto-vertical">
+    <button class="uk-modal-close-outside" type="button" uk-close></button>
+    <div class="uk-modal-body" uk-overflow-auto>
+      <form id="question-only-data-generate-form">
+        <div class="uk-margin">
+          <select class="uk-select" id="interface" required>
+            <option value="">select an interface</option>
+            <option value="ctrl_k">Ctrl + K</option>
+            <option value="ctrl_l">Ctrl + L</option>
+            <option value="ctrl_i">Ctrl + I</option>
+            <option value="not_applicable">Not Applicable</option>
+          </select>
+        </div>
+        <div class="uk-margin">
+          <select class="uk-select" id="category" required>
+            <option value="">select a category</option>
+            <option value="bug">Bug</option>
+            <option value="error">Error</option>
+            <option value="general">General</option>
+            <option value="glossary">Glossary</option>
+          </select>
+        </div>
+        <div class="uk-margin">
+          <input class="uk-input" type="text" id="question" placeholder="Question" required>
+        </div>
+      </form>
+    </div>
+    <div class="uk-modal-footer uk-text-right">
+      <button class="uk-button uk-button-secondary uk-width-1-1" id="question-only-data-generate">Copy JSON to Clipboard</button>
     </div>
   </div>
   `;
@@ -868,9 +929,9 @@ $(document).on('click', '#qa-data-generate', function(event) {
   }
 
   const id = "----increment-this-id-for-each-new-qa----";
-  const interface_val = $('#interface').val();
-  const category = $('#category option:selected').val();
-  const question = $('#question option:selected').val();
+  const interface_val = $('#interface_qa').val();
+  const category = $('#category_qa option:selected').val();
+  const question = $('#question_qa').val();
   const last_updated = format(new Date(), 'dd/MM/yy');
 
   const answer_steps = $('#answer-steps-container input').map(function() {
@@ -893,6 +954,44 @@ $(document).on('click', '#qa-data-generate', function(event) {
 
   navigator.clipboard.writeText(JSON.stringify(result, null, 2)).then(function() {
     UIkit.notification("Q&A was copied to clipboard!", {status: 'success', timeout: 5000})
+  }).catch(function(err) {
+    console.error('could not copy text: ', err);
+  });
+});
+
+
+$(document).on('click', '#question-only-data-generate', function(event) {
+  event.preventDefault();
+  
+  // run form validations
+  const $form = $('#question-only-data-generate-form');
+  if (!$form[0].checkValidity()) {
+    $form[0].reportValidity();
+    return;
+  }
+
+  const id = "----increment-this-id-for-each-new-qa----";
+  const interface_val = $('#interface').val();
+  const category = $('#category option:selected').val();
+  const question = $('#question').val();
+  const last_updated = format(new Date(), 'dd/MM/yy');
+
+  const answer_steps = [];
+
+  const related_links = [];
+
+  const result = {
+      id: id,
+      interface: interface_val,
+      category: category,
+      question: question,
+      answer_steps: answer_steps,
+      related_links: related_links,
+      last_updated: last_updated
+  };
+
+  navigator.clipboard.writeText(JSON.stringify(result, null, 2)).then(function() {
+    UIkit.notification("Question was copied to clipboard!", {status: 'success', timeout: 5000})
   }).catch(function(err) {
     console.error('could not copy text: ', err);
   });

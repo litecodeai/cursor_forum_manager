@@ -77,6 +77,17 @@ span#qa_answers_result_count_container {
     margin-left: auto; /* push to the right */
 }
 
+p.slight_freakout {
+    background: #ffd588;
+    padding: 10px 20px;
+    border: 1px solid #000;
+    color: #000;
+}
+
+p.page-description-time-stamp {
+    margin-top: -20px !important;
+}
+
 /* new styles for the loading indicator */
 #loading_indicator {
     margin-left: auto;
@@ -515,7 +526,7 @@ scrollbar-color: #6b6b6b #d2d2d2;
 
   div#answer-container {
     background: #333;
-    height: 1000px;
+    min-height: 1000px;
     overflow-y: scroll;
     border: 1px solid #333;
     /* padding: 15px; */
@@ -543,7 +554,7 @@ pre {
 /* answers */
 
 .answer {
-    border-bottom: 15px solid #696969;
+    border-top: 20px solid #333;
     background: #fff;
 }
 
@@ -656,3 +667,38 @@ button#add-related-link {
     background: #b6ff96;
     color: #000;
 }
+
+
+
+/* tables */
+
+td.status_section {
+    background: #3e3e3e;
+    color: #fff;
+}
+
+td.status_subsection {
+    background: #e9e9e9;
+    color: #000;
+}
+
+td.status_operational {
+    background: #beffbe;
+    color: #000;
+}
+
+td.status_some_issues {
+    background: #ffdcae;
+    color: #000;
+}
+
+table#status_table tr {
+    border-left: 1px solid #333;
+    border-right: 1px solid #333;
+    border-bottom: 1px solid #333;
+}
+
+table#status_table td {
+    border-right: 1px solid #333;
+}
+

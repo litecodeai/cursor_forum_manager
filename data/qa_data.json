@@ -2,9 +2,10 @@
     "qa_data": [
       {
         "id": 1,
-        "interface": "ctrl_l",
-        "category": "qa_error",
-        "question": "When using `Ctrl` + `L`, I submit my prompt and I don't get a response, what should I do?",
+        "interface": "Ctrl + L",
+        "category": "Error or Bug",
+        "glossary_term": "Not Applicable",
+        "question": "When using <code>Ctrl</code> + <code>L</code>, I submit my prompt and I don't get a response, what should I do?",
         "answer_steps": [
             "When you submit a prompt using <code>Ctrl</code> + <code>L</code> and don't get a response, it is likely a connection issue.",
             "Here are some steps you can take.",
@@ -16,13 +17,15 @@
         "related_links": [
             "https://docs.cursor.com/troubleshooting/troubleshooting-guide"
         ],
+        "status": "Answered",
         "last_updated": "2024-09-24"
       },
       {
         "id": 2,
-        "interface": "ctrl_l",
-        "category": "qa_error",
-        "question": "When using `Ctrl` + `L`, I submit my prompt, get a response, click `Apply` and the changes are not applied, what should I do?",
+        "interface": "Ctrl + L",
+        "category": "Error or Bug",
+        "glossary_term": "Not Applicable",
+        "question": "When using <code>Ctrl</code> + <code>L</code>, I submit my prompt, get a response, click <code>Apply</code> and the changes are not applied, what should I do?",
         "answer_steps": [
             "When you submit a prompt using <code>Ctrl</code> + <code>L</code>, get a response, click <code>Apply</code> and the changes are not applied, it is likely a bug.",
             "Here are some steps you can take.",
@@ -32,12 +35,14 @@
         "related_links": [
             "https://docs.cursor.com/troubleshooting/troubleshooting-guide"
         ],
+        "status": "Answered",
         "last_updated": "2024-09-24"
       },
       {
         "id": 3,
-        "interface": "ctrl_l",
-        "category": "qa_error",
+        "interface": "Ctrl + L",
+        "category": "Information - Humorous",
+        "glossary_term": "Not Applicable",
         "question": "I want to go to a waterfall, what should I do?",
         "answer_steps": [
             "You can find a waterfall by searching for it."
@@ -45,12 +50,14 @@
         "related_links": [
             "https://www.google.com"
         ],
+        "status": "Answered",
         "last_updated": "2024-09-24"
       },
       {
         "id": 4,
-        "interface": "ctrl_l",
-        "category": "qa_error",
+        "interface": "Ctrl + L",
+        "category": "Information - Humorous",
+        "glossary_term": "Not Applicable",
         "question": "Where can I get a red car?",
         "answer_steps": [
             "You can get a red car at the car shop."
@@ -59,12 +66,14 @@
             "https://www.google.com",
             "https://www.cursor.com"
         ],
+        "status": "Answered",
         "last_updated": "2024-09-24"
       },
       {
         "id": 5,
-        "interface": "ctrl_l",
-        "category": "qa_error",
+        "interface": "Ctrl + L",
+        "category": "Information - Humorous",
+        "glossary_term": "Not Applicable",
         "question": "Where can I find a purple cow?",
         "answer_steps": [
             "In Switzerland, ofcourse."
@@ -72,12 +81,14 @@
         "related_links": [
             "https://www.google.com"
         ],
+        "status": "Answered",
         "last_updated": "2024-09-24"
       },
       {
         "id": 6,
-        "interface": "ctrl_l",
-        "category": "qa_general",
+        "interface": "Ctrl + L",
+        "category": "Glossary",
+        "glossary_term": "Ctrl + L",
         "question": "What is Ctrl + L?",
         "answer_steps": [
             "Ctrl + L is the keyboard shortcut that opens the Cursor Chat pane"
@@ -85,12 +96,14 @@
         "related_links": [
             "https://docs.cursor.com/chat/overview"
         ],
+        "status": "Answered",
         "last_updated": "2024-09-25"
       },
       {
         "id": 7,
-        "interface": "ctrl_l",
-        "category": "qa_general",
+        "interface": "Not Applicable",
+        "category": "Glossary",
+        "glossary_term": "Cursor",
         "question": "What is Cursor?",
         "answer_steps": [
             "Cursor is a fork of VS Code which has additional built in AI features"
@@ -98,12 +111,14 @@
         "related_links": [
             "https://www.cursor.com"
         ],
+        "status": "Answered",
         "last_updated": "2024-09-25"
       },
       {
         "id": 8,
-        "interface": "ctrl_l",
-        "category": "qa_general",
+        "interface": "Not Applicable",
+        "category": "Information - Service",
+        "glossary_term": "Not Applicable",
         "question": "Where is the Cursor Changelog?",
         "answer_steps": [
             "You can view the Cursor Changelog at <a href='https://changelog.cursor.sh' target='_blank'>Cursor Changelog</a>"
@@ -111,12 +126,14 @@
         "related_links": [
             "https://www.cursor.com"
         ],
+        "status": "Answered",
         "last_updated": "2024-09-25"
       },
       {
         "id": 9,
-        "interface": "ctrl_l",
-        "category": "glossary",
+        "interface": "Ctrl + I",
+        "category": "Glossary",
+        "glossary_term": "Accept All",
         "question": "What is Accept All in Composer?",
         "answer_steps": [
             "It adds all suggested changes to the relevant files, files must then be saved manually to apply them."
@@ -124,8 +141,37 @@
         "related_links": [
             "https://docs.cursor.com"
         ],
-        "last_updated": "2024-09-24"
+        "status": "Answered",
+        "last_updated": "2024-09-28"
+      },
+      {
+        "id": 10,
+        "interface": "Not Applicable",
+        "category": "Information - Accounts",
+        "glossary_term": "Not Applicable",
+        "question": "Do the 2,000 completions in the hobby tier refresh each month?",
+        "answer_steps": ["Pending answer."],
+        "related_links": ["https://docs.cursor.com"],
+        "status": "Unanswered",
+        "last_updated": "2024-09-28"
+      },
+      {
+        "id": 11,
+        "interface": "Not Applicable",
+        "category": "Information - Company",
+        "glossary_term": "Not Applicable",
+        "question": "Who makes Cursor?",
+        "answer_steps": [
+            "Cursor is made by Anysphere."
+        ],
+        "related_links": [
+            "https://anysphere.inc"
+        ],
+        "status": "Answered",
+        "last_updated": "2024-09-28"
       }
     ]
   }
+
+
   
