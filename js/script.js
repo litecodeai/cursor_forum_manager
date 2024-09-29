@@ -728,6 +728,10 @@ $(document).on('click', '.question-list-item', (event) => {
           $('#answer-container').empty();
           $('#query-input').val('');
           $('#qa_answers_result_count').html('&nbsp;');
+          // clear question search and glossary term search
+          // need to trigger input event to clear the search icon 
+          $('#question-search').val('').trigger('input');
+          $('#glossary-term-filter-input').val('').trigger('input');
       }
   });
 
