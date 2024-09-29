@@ -1086,6 +1086,13 @@ $(document).on('click', '.glossary_term', function() {
 $(document).on('input', '#glossary-term-filter-input', function() {
   const filter_text = $(this).val().toLowerCase();
 
+  // show/hide the clear icon based on input length
+  if (filter_text.length > 0) {
+    $('#clear-glossary-term-search-icon').show();
+  } else {
+    $('#clear-glossary-term-search-icon').hide();
+}
+
   $('#glossary-terms-container .glossary-section-header').each(function() {
       const $section_header = $(this);
       let has_matching_terms = false;
@@ -1114,6 +1121,13 @@ $(document).on('input', '#glossary-term-filter-input', function() {
 $(document).on('input', '#question-search', function() {
   const filter_text = $(this).val().toLowerCase();
 
+  // show/hide the clear icon based on input length
+  if (filter_text.length > 0) {
+      $('#clear-question-search-icon').show();
+  } else {
+      $('#clear-question-search-icon').hide();
+  }
+
   $('#question-list .question-list-item').each(function() {
       const $item = $(this);
       const item_text = $item.text().toLowerCase();
@@ -1124,3 +1138,15 @@ $(document).on('input', '#question-search', function() {
       }
   });
 });
+
+
+// add event handler to clear the input field when the icon is clicked
+$(document).on('click', '#clear-question-search-icon', function() {
+  $('#question-search').val('').trigger('input');
+});
+
+// add event handler to clear the input field when the icon is clicked
+$(document).on('click', '#clear-glossary-term-search-icon', function() {
+  $('#glossary-term-filter-input').val('').trigger('input');
+});
+

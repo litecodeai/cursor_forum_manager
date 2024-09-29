@@ -205,6 +205,16 @@ input#question-search {
     margin-bottom: 20px;
 }
 
+#clear-question-search-icon,
+#clear-glossary-term-search-icon {
+    position: absolute;
+    right: 15px;
+    top: 11px;
+    cursor: pointer;
+    display: none;
+    color: #cacaca;
+}
+
 input#query-input {
     border: 1px solid #333;
 }
@@ -745,6 +755,7 @@ p.glossary-section-header:first-child {
 
 div#glossary-term-filter-input-container {
     margin-top: 40px;
+    position: relative;
 }
 
 input#glossary-term-filter-input {
