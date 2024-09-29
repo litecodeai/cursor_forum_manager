@@ -1110,3 +1110,17 @@ $(document).on('input', '#glossary-term-filter-input', function() {
       }
   });
 });
+
+$(document).on('input', '#question-search', function() {
+  const filter_text = $(this).val().toLowerCase();
+
+  $('#question-list .question-list-item').each(function() {
+      const $item = $(this);
+      const item_text = $item.text().toLowerCase();
+      if (item_text.includes(filter_text)) {
+          $item.show();
+      } else {
+          $item.hide();
+      }
+  });
+});
