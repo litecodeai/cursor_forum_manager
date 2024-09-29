@@ -740,5 +740,13 @@ p.glossary-section-header {
 }
 
 p.glossary-section-header:first-child {
-    margin-top: 30px;
+    margin-top: 10px;
+}
+
+div#glossary-term-filter-input-container {
+    margin-top: 40px;
+}
+
+input#glossary-term-filter-input {
+    border: 1px solid #cacaca;
 }

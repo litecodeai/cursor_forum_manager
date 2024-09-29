@@ -439,7 +439,7 @@ async function load_qa_data_to_glossary(qa_data) {
 
       $("#glossary-terms-container").append(`
         <p class="glossary_term" uk-toggle="target: +.glossary_term_container">
-          <span class="glossary_toggle" uk-icon="icon: plus; ratio: 1"></span> ${item.glossary_term}
+          <span class="glossary_toggle" uk-icon="icon: plus; ratio: 1"></span> <span class="glossary_term_text">${item.glossary_term}</span>
         </p>
         <div class="glossary_term_container" hidden>
           <p class="glossary_question"><span class="glossary_q">Q:</span>${item.question}</p>
@@ -454,7 +454,7 @@ async function load_qa_data_to_glossary(qa_data) {
 // call the function to load data
 await load_qa_data();
 // open the first glossary term - dodgy mcdodge
-$('.glossary_term').first().click();
+// $('.glossary_term').first().click();
 
 
 // function to load the model
@@ -1080,4 +1080,33 @@ $(document).on('click', '.glossary_term', function() {
   } else {
     $toggleIcon.attr('uk-icon', 'icon: minus; ratio: 1');
   }
+});
+
+
+$(document).on('input', '#glossary-term-filter-input', function() {
+  const filter_text = $(this).val().toLowerCase();
+
+  $('#glossary-terms-container .glossary-section-header').each(function() {
+      const $section_header = $(this);
+      let has_matching_terms = false;
+
+      $section_header.nextUntil('.glossary-section-header').each(function() {
+          const $term = $(this);
+          if ($term.hasClass('glossary_term')) {
+              const term_text = $term.find('.glossary_term_text').text().toLowerCase();
+              if (term_text.includes(filter_text)) {
+                  $term.show();
+                  has_matching_terms = true;
+              } else {
+                  $term.hide();
+              }
+          }
+      });
+
+      if (has_matching_terms) {
+          $section_header.show();
+      } else {
+          $section_header.hide();
+      }
+  });
 });
