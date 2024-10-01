@@ -346,6 +346,30 @@
         "related_links": ["https://docs.cursor.com/tab/overview"],
         "status": "Answered",
         "last_updated": "2024-10-01"
+      },
+      {
+        "id": "x4y5z6a7-b8c9-d0e1-f2g3-h4i5j6k7l8m9",
+        "interface": "Ctrl + L",
+        "category": "Information - Product",
+        "glossary_category": "Not Applicable",
+        "glossary_term": "Not Applicable",
+        "question": "How do I export all my Chat history?",
+        "answer_steps": ["Pending answer."],
+        "related_links": ["https://docs.cursor.com"],
+        "status": "Unanswered",
+        "last_updated": "2024-10-02"
+      },
+      {
+        "id": "y5z6a7b8-c9d0-e1f2-g3h4-i5j6k7l8m9n0",
+        "interface": "Not Applicable",
+        "category": "Information - Product",
+        "glossary_category": "Not Applicable",
+        "glossary_term": "Not Applicable",
+        "question": "Is Cursor supported on WSL (Windows Subsystem for Linux)?",
+        "answer_steps": ["Pending answer."],
+        "related_links": ["https://docs.cursor.com"],
+        "status": "Unanswered",
+        "last_updated": "2024-10-02"
       }
     ]
   }
