@@ -309,6 +309,30 @@
         "related_links": ["https://cursor.com/settings"],
         "status": "Answered",
         "last_updated": "2024-10-01"
+      },
+      {
+        "id": "a1b2c3d4-e5f6-7g8h-9i0j-k1l2m3n4o5p7",
+        "interface": "Not Applicable",
+        "category": "Information - Product",
+        "glossary_category": "Not Applicable",
+        "glossary_term": "Not Applicable",
+        "question": "Where can I view the Cursor Privacy Policy?",
+        "answer_steps": ["You can view the Cursor Privacy Policy at <a href='https://www.cursor.com/privacy' target='_blank'>https://www.cursor.com/privacy</a>."],
+        "related_links": ["https://www.cursor.com/privacy"],
+        "status": "Answered",
+        "last_updated": "2024-10-01"
+      },
+      {
+        "id": "f8e1c2d3-4b5e-6f7a-8b9c-0d1e2f3g4h8", 
+        "interface": "Not Applicable",
+        "category": "Information - Product",
+        "glossary_category": "Not Applicable",
+        "glossary_term": "Not Applicable",
+        "question": "Where can I view the Cursor Security policy?",
+        "answer_steps": ["You can view the Cursor Security policy at <a href='https://www.cursor.com/security' target='_blank'>https://www.cursor.com/security</a>."],
+        "related_links": ["https://www.cursor.com/security"],
+        "status": "Answered",
+        "last_updated": "2024-10-01"
       }
     ]
   }
