@@ -450,7 +450,7 @@ async function load_qa_data_to_glossary(qa_data) {
   }
 
 // add glossary term count to glossary-term-filter-input placeholder text
-$('#glossary-term-filter-input').attr('placeholder', `Filter ${glossary_items.length} glossary categories...`);
+$('#glossary-term-filter-input').attr('placeholder', `Filter ${glossary_items.length} glossary terms...`);
 
 }
 
