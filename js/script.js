@@ -130,13 +130,11 @@ $(document).on('click', '.playlist-item', (event) => {
 $(document).on('change', '#playlist', (event) => {  
     const $this = $(event.currentTarget);
     const selected_playlist = $this.val();
-    //console.log(`selected_playlist is:  ${selected_playlist}`);
     load_playlist(selected_playlist);
 });
 
 
 $(document).ready(async function() {
-    //console.log("ready");
     generate_triage_helper_table_rows();
     instantiate_media_player();
     handle_url_switcher();
@@ -198,13 +196,11 @@ const generate_triage_helper_table_rows = async () => {
             throw new Error("Network response was not ok");
         }
         const data = await response.json();
-        //console.log(data);
 
         const $table = $("#triage-helper-table"); // select the table
         const $table_body = $table.find("tbody"); // select the table body
 
         data.forEach(item => {
-            //console.log(item);
             const $tr = $("<tr>");
             $tr.append($("<td>").text(item.id));
             $tr.append($("<td>").text(item.category));
@@ -239,7 +235,6 @@ const instantiate_media_player = async () => {
             throw new Error("Network response was not ok");
         }
         const data = await response.json();
-        //console.log(data);
 
         media_player_playlists = data.media_player_playlists;
         const media_player_starting_playlist_name = "Third Party - Cursor Overview";
@@ -274,8 +269,6 @@ const instantiate_media_player = async () => {
 }
 
 const load_playlist = (playlist_name) => {
-
-    //console.log(`loading playlist: ${playlist_name}`);
 
     if (!media_player_playlists) {
       console.error("Media player playlists not loaded. Load playlist aborted.");
@@ -401,6 +394,11 @@ async function load_qa_data_to_questions_list(qa_data) {
   for (const item of qa_data) {
     $("#question-list").append(`<li class="question-list-item">${item.question}</li>`);
   }
+
+  // modify placeholder text for the query-input and question-search inputs to display the number of questions in the qa_data file 
+  const number_of_questions = qa_data.length;
+  $('#query-input').attr('placeholder', `Search ${number_of_questions} embedded questions...`);
+  $('#question-search').attr('placeholder', `Filter ${number_of_questions} questions - click item to add to search...`);
 }
 
 // function to list glossary items grouped by category and sorted alphabetically
@@ -506,13 +504,13 @@ async function handle_query(query) {
   // compute sentence embedding by averaging token embeddings
   const query_vector = mean_pooling(token_embeddings);
 
-  console.log('query vector:', query_vector.length);
+  console.log('query vector length:', query_vector.length);
 
   const results = [];
 
   // compare embeddings to find the best matches
   for (const item of qa_data) {
-    console.log('item embedding:', item.embedding.length);
+    console.log('item embedding length:', item.embedding.length);
 
     const score = cosine_similarity(query_vector, item.embedding);
 
@@ -962,7 +960,6 @@ $(document).on('click', '#add-related-link', function() {
 
 $(document).on('click', '.remove-answer-step', function(event) {
   event.preventDefault();
-  console.log('remove-answer-step');
   const $answer_step_container = $('.answer-step-container');
   if ($answer_step_container.length > 1) {
     $(this).closest('.answer-step-container').remove();
@@ -974,7 +971,6 @@ $(document).on('click', '.remove-answer-step', function(event) {
 
 $(document).on('click', '.remove-related-link', function(event) {
   event.preventDefault();
-  console.log('remove-related-link');
   const $related_link_container = $('.related-link-container');
   
   if ($related_link_container.length > 1) {
@@ -1069,7 +1065,6 @@ $(document).on('click', '.open-ui-explorer-gallery', (event) => {
   event.preventDefault();
   const $this = $(event.currentTarget);
   const index = $this.data('gallery-index');
-  console.log('index:', index);
   UIkit.lightbox('#ui_explorer_gallery').show(index);
 });
 
