@@ -404,15 +404,14 @@ async function load_qa_data_to_questions_list(qa_data) {
 // function to list glossary items grouped by category and sorted alphabetically
 async function load_qa_data_to_glossary(qa_data) {
   // filter and group by glossary_category
-  const grouped_data = qa_data
-    .filter(item => item.category === "Glossary")
-    .reduce((acc, item) => {
-      if (!acc[item.glossary_category]) {
-        acc[item.glossary_category] = [];
-      }
-      acc[item.glossary_category].push(item);
-      return acc;
-    }, {});
+  const glossary_items = qa_data.filter(item => item.category === "Glossary");
+  const grouped_data = glossary_items.reduce((acc, item) => {
+    if (!acc[item.glossary_category]) {
+      acc[item.glossary_category] = [];
+    }
+    acc[item.glossary_category].push(item);
+    return acc;
+  }, {});
 
   // sort the categories using the default sorting function
   const sorted_categories = Object.keys(grouped_data).sort((a, b) => a.localeCompare(b));
@@ -447,6 +446,9 @@ async function load_qa_data_to_glossary(qa_data) {
     }
   }
 
+  // add glossary term count to glossary-term-filter-input placeholder text
+  const glossary_terms_count = glossary_items.length;
+  $('#glossary-term-filter-input').attr('placeholder', `Filter ${glossary_terms_count} glossary terms...`);
 }
 
 // call the function to load data
