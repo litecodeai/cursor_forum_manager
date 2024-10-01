@@ -56,6 +56,30 @@
       "video_src": "https://www.youtube.com/embed/YALpX8oOn78?rel=0"
       }
     ]
+  },
+  {
+    "playlist_name": "Third Party - Related Education",
+    "videos": [
+      {
+      "type": "youtube",
+      "title_line_1": "Susan B.",
+      "title_line_2": "SSH Remote development with VSCode",
+      "duration": "4:38", 
+      "video_src": "https://www.youtube.com/embed/cOopQQIL8JU?rel=0"
+      }
+    ]
+  },
+  {
+    "playlist_name": "Third Party - AI Education",
+    "videos": [
+      {
+      "type": "youtube",
+      "title_line_1": "codebasics",
+      "title_line_2": "Neural Network Simply Explained",
+      "duration": "11:00", 
+      "video_src": "https://www.youtube.com/embed/ER2It2mIagI?rel=0"
+      }
+    ]
   }
 ]
 }
