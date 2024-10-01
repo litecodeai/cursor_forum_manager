@@ -5,6 +5,21 @@ import { pipeline, env } from '@xenova/transformers';
 
 env.allowLocalModels = false; // Ensure models are fetched from the internet
 
+// function to preprocess text
+// function preprocess_text(text) {
+//   return text
+//     .replace(/<\/?code>/g, '') // remove <code> tags
+//     .replace(/[^a-zA-Z0-9\s]/g, '') // remove special characters
+//     .toLowerCase() // convert to lowercase
+//     .replace(/\s+/g, ' '); // replace multiple spaces with a single space
+// }
+
+function preprocess_text(text) {
+  return text
+    .replace(/<\/?code>/g, '') // remove <code> tags
+    .toLowerCase() // convert to lowercase
+}
+
 async function generate_embeddings() {
   // Load the qa_data.json file
   const data = JSON.parse(fs.readFileSync('./data/qa_data.json', 'utf8'));
@@ -34,8 +49,11 @@ async function generate_embeddings() {
   // Generate embeddings for each question
   for (let item of data.qa_data) {
     try {
+      // Preprocess the question
+      const cleaned_question = preprocess_text(item.question);
+
       // Get token embeddings as a Tensor
-      const output = await featureExtractor(item.question);
+      const output = await featureExtractor(cleaned_question);
 
       // Extract the embeddings from the Tensor
       // The tensor has dimensions [1, numTokens, embeddingDim]
@@ -54,9 +72,9 @@ async function generate_embeddings() {
 
       // Store the sentence embedding
       item.embedding = sentenceEmbedding;
-      console.log(`Generated embedding for: "${item.question}"`);
+      console.log(`Generated embedding for: "${cleaned_question}"`);
     } catch (err) {
-      console.error(`Error processing question: "${item.question}"`, err);
+      console.error(`Error processing question: "${cleaned_question}"`, err);
     }
   }
 

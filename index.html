@@ -53,6 +53,9 @@
     referrerpolicy="no-referrer" 
     />
 
+    <!-- html-entities -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/he/1.2.0/he.min.js" integrity="sha512-PEsccDx9jqX6Dh4wZDCnWMaIO3gAaU0j46W//sSqQhUQxky6/eHZyeB3NrXD2xsyugAKd4KPiDANkcuoEa2JuA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <!-- Custom CSS -->  
     <link rel="stylesheet" href="css/styles.css" />
 
@@ -66,8 +69,8 @@
     <script src="js/jquery.json-viewer.js"></script>
 
     <!-- highlight.js -->
-    <!-- srcery, panda-syntax-dark, nord, nnfx-light, monokai-sublime, isbl-editor-light --> 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/styles/isbl-editor-light.css">
+    <!-- srcery, panda-syntax-dark, nord, nnfx-light, monokai-sublime, isbl-editor-light, isbl-editor-dark, ir-black, intellij-light, grayscale, gradient-light, gradient-dark, base16-windows-nt, ascetic --> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/styles/ascetic.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/highlight.min.js"></script>
 
     
@@ -385,7 +388,7 @@
     <span id="loading_indicator">Searching...</span>
   </div>
 </form>
-<p class="qa_section_header">Answers <span class="answers_tagline">Top five results with cosine similarity above 0.5</span> <span id="qa_answers_result_count_container">Result Count:  <span id="qa_answers_result_count">&nbsp;</span></span></p>
+<p class="qa_section_header">Answers <span class="answers_tagline">Top five results with cosine similarity above 0.4</span> <span id="qa_answers_result_count_container">Result Count:  <span id="qa_answers_result_count">&nbsp;</span></span></p>
 <div id="answer-container"></div>
 
 

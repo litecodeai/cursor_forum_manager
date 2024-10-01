@@ -142,10 +142,13 @@ $(document).ready(async function() {
     const qa_data_response = await fetch("data/qa_data.json");
     const qa_data = await qa_data_response.json();
     
+    // escape HTML characters in JSON data using he library
+    const escaped_json = he.encode(JSON.stringify(qa_data, null, 2));
+
     // render JSON using jsonViewer
     //$("#qa-data-json-viewer").jsonViewer(qa_data, {collapsed: false, rootCollapsable: true, withQuotes: false, withLinks: true});
 
-    $("#qa-data-json-viewer").html(`<code class="json">${JSON.stringify(qa_data, null, 2)}</code>`);
+    $("#qa-data-json-viewer").html(`<code class="json">${escaped_json}</code>`);
 
     // apply highlight.js to each code block within the jsonViewer
     // $('#qa-data-json-viewer').each(function(i, block) {
@@ -159,7 +162,7 @@ $(document).ready(async function() {
   //     });
   // });    
 
-hljs.highlightAll();
+    hljs.highlightAll();
 
 });
 
@@ -446,9 +449,9 @@ async function load_qa_data_to_glossary(qa_data) {
     }
   }
 
-  // add glossary term count to glossary-term-filter-input placeholder text
-  const glossary_terms_count = glossary_items.length;
-  $('#glossary-term-filter-input').attr('placeholder', `Filter ${glossary_terms_count} glossary terms...`);
+// add glossary term count to glossary-term-filter-input placeholder text
+$('#glossary-term-filter-input').attr('placeholder', `Filter ${glossary_items.length} glossary categories...`);
+
 }
 
 // call the function to load data
@@ -485,12 +488,30 @@ function cosine_similarity(a, b) {
   }
 }
 
+// function to preprocess text
+// function preprocess_text(text) {
+//   return text
+//     .replace(/<\/?code>/g, '') // remove <code> tags
+//     .replace(/[^a-zA-Z0-9\s]/g, '') // remove special characters
+//     .toLowerCase() // convert to lowercase
+//     .replace(/\s+/g, ' '); // replace multiple spaces with a single space
+// }
+
+function preprocess_text(text) {
+  return text
+    .replace(/<\/?code>/g, '') // remove <code> tags
+    .toLowerCase() // convert to lowercase
+}
+
 // function to handle the user's query
 async function handle_query(query) {
   await load_model();
 
+  // remove special characters and convert query to lowercase
+  const cleaned_query = preprocess_text(query);
+
   // generate embedding for the user's query
-  const output = await model(query);
+  const output = await model(cleaned_query);
 
   // extract the embeddings from the tensor
   const [batch_size, num_tokens, embedding_dim] = output.dims;
@@ -516,9 +537,11 @@ async function handle_query(query) {
 
     const score = cosine_similarity(query_vector, item.embedding);
 
-    console.log(`similarity with "${item.question}": ${score}`);
+    const cleaned_question = preprocess_text(item.question);
 
-    if (score > 0.5) {
+    console.log(`similarity with "${cleaned_question}": ${score}`);
+
+    if (score > 0.4) {
       results.push({ item, score });
     }
   }
@@ -779,7 +802,7 @@ $(document).on('click', '#how-does-qa-work', (e) => {
   <ul>
       <li>Embeds the query using the same model as the question embeddings</li>
       <li>Performs a cosine similarity search on the <code>embeddings</code> property</li>
-      <li>Returns the top five results with cosine similarity above 0.5</li>
+      <li>Returns the top five results with cosine similarity above 0.4</li>
   </ul>
   <p class="page-description">This is a client-side search on <code>qa_data_with_embeddings.json</code>.</p>
   </div>
