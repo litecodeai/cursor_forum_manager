@@ -1,9 +1,7 @@
-
-
 {
     "qa_data": [
       {
-        "id": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+        "id": "a1b2c3d4-e5f6-7g8h-9i0j-k1l2m3n4o5p1",
         "interface": "Ctrl + L",
         "category": "Error or Bug",
         "glossary_category": "Not Applicable",
@@ -24,7 +22,7 @@
         "last_updated": "2024-09-24"
       },
       {
-        "id": "c9bf9e57-1685-4c89-bafb-ff5af830be8a",
+        "id": "b2c3d4e5-f6g7-h8i9-j0k1-l2m3n4o5p6q2",
         "interface": "Ctrl + L",
         "category": "Error or Bug",
         "glossary_category": "Not Applicable",
@@ -43,7 +41,7 @@
         "last_updated": "2024-09-24"
       },
       {
-        "id": "a3bb189e-8bf9-3888-9912-ace4e6543002",
+        "id": "c3d4e5f6-g7h8-i9j0-k1l2-m3n4o5p6q7r3",
         "interface": "Ctrl + L",
         "category": "Information - Humorous",
         "glossary_category": "Not Applicable",
@@ -59,7 +57,7 @@
         "last_updated": "2024-09-24"
       },
       {
-        "id": "9c858901-8a57-4791-81fe-4c455b099bc9",
+        "id": "d4e5f6g7-h8i9-j0k1-l2m3-n4o5p6q7r8s4",
         "interface": "Ctrl + L",
         "category": "Information - Humorous",
         "glossary_category": "Not Applicable",
@@ -76,7 +74,7 @@
         "last_updated": "2024-09-24"
       },
       {
-        "id": "7c9e6679-7425-40de-944b-e07fc1f90ae7",
+        "id": "e5f6g7h8-i9j0-k1l2-m3n4-o5p6q7r8s9t5",
         "interface": "Ctrl + L",
         "category": "Information - Humorous",
         "glossary_category": "Not Applicable",
@@ -92,7 +90,7 @@
         "last_updated": "2024-09-24"
       },
       {
-        "id": "e7d3e8b0-8f3b-4c8e-9b8b-1a2b3c4d5e6f",
+        "id": "f6g7h8i9-j0k1-l2m3-n4o5-p6q7r8s9t0u6",
         "interface": "Ctrl + L",
         "category": "Glossary",
         "glossary_category": "Ctrl + L",
@@ -108,7 +106,7 @@
         "last_updated": "2024-09-25"
       },
       {
-        "id": "d9b2d63d-a233-4123-847a-7f7b0e6c8b8c",
+        "id": "g7h8i9j0-k1l2-m3n4-o5p6-q7r8s9t0u1v7",
         "interface": "Not Applicable",
         "category": "Glossary",
         "glossary_category": "Information - Service",
@@ -128,7 +126,7 @@
         "last_updated": "2024-09-25"
       },
       {
-        "id": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+        "id": "h8i9j0k1-l2m3-n4o5-p6q7-r8s9t0u1v2w8",
         "interface": "Not Applicable",
         "category": "Information - Service",
         "glossary_category": "Not Applicable",
@@ -144,7 +142,7 @@
         "last_updated": "2024-09-25"
       },
       {
-        "id": "c9bf9e57-1685-4c89-bafb-ff5af830be8a",
+        "id": "i9j0k1l2-m3n4-o5p6-q7r8-s9t0u1v2w3x9",
         "interface": "Ctrl + I",
         "category": "Glossary",
         "glossary_category": "Ctrl + I",
@@ -161,7 +159,7 @@
         "last_updated": "2024-09-28"
       },
       {
-        "id": "a3bb189e-8bf9-3888-9912-ace4e6543002",
+        "id": "j0k1l2m3-n4o5-p6q7-r8s9-t0u1v2w3x4y0",
         "interface": "Ctrl + I",
         "category": "Glossary",
         "glossary_category": "Ctrl + I",
@@ -177,7 +175,7 @@
         "last_updated": "2024-09-28"
       },
       {
-        "id": "9c858901-8a57-4791-81fe-4c455b099bc9",
+        "id": "k1l2m3n4-o5p6-q7r8-s9t0-u1v2w3x4y5z1",
         "interface": "Not Applicable",
         "category": "Information - Accounts",
         "glossary_category": "Not Applicable",
@@ -189,7 +187,7 @@
         "last_updated": "2024-09-28"
       },
       {
-        "id": "7c9e6679-7425-40de-944b-e07fc1f90ae7",
+        "id": "l2m3n4o5-p6q7-r8s9-t0u1-v2w3x4y5z6a2",
         "interface": "Not Applicable",
         "category": "Glossary",
         "glossary_category": "Information - Company",
@@ -205,7 +203,7 @@
         "last_updated": "2024-09-28"
       },
       {
-        "id": "e7d3e8b0-8f3b-4c8e-9b8b-1a2b3c4d5e6f",
+        "id": "m3n4o5p6-q7r8-s9t0-u1v2-w3x4y5z6a7b3",
         "interface": "Ctrl + I",
         "category": "Glossary",
         "glossary_category": "Ctrl + I",
@@ -223,7 +221,7 @@
         "last_updated": "2024-09-25"
       },
       {
-        "id": "123e4567-e89b-12d3-a456-426614174000",
+        "id": "n4o5p6q7-r8s9-t0u1-v2w3-x4y5z6a7b8c4",
         "interface": "Not Applicable",
         "category": "Information - Product",
         "glossary_category": "Not Applicable",
@@ -237,7 +235,7 @@
         "last_updated": "2024-10-01"
       },
       {
-        "id": "f8e1c2d3-4b5e-6f7a-8b9c-0d1e2f3g4h5i",
+        "id": "o5p6q7r8-s9t0-u1v2-w3x4-y5z6a7b8c9d5",
         "interface": "Not Applicable",
         "category": "Information - Product",
         "glossary_category": "Not Applicable",
@@ -249,7 +247,7 @@
         "last_updated": "2024-10-01"
       },
       {
-        "id": "f8e1c2d3-4b5e-6f7a-8b9c-0d1e2f3g4h6", 
+        "id": "p6q7r8s9-t0u1-v2w3-x4y5-z6a7b8c9d0e6", 
         "interface": "Not Applicable",
         "category": "Information - Product",
         "glossary_category": "Not Applicable",
@@ -261,19 +259,21 @@
         "last_updated": "2024-10-01"
       },
       {
-        "id": "a1b2c3d4-e5f6-7g8h-9i0j-k1l2m3n4o5p6",
+        "id": "q7r8s9t0-u1v2-w3x4-y5z6-a7b8c9d0e1f7",
         "interface": "Cursor Tab",
         "category": "Error or Bug",
         "glossary_category": "Not Applicable",
         "glossary_term": "Not Applicable",
         "question": "Does Cursor work behind a VPN?",
-        "answer_steps": ["<code>Cursor Tab</code> and <code>Ctrl</code> + <code>K</code> use <code>HTTP/2</code> by default, which allows Cursor to use less resources with lower latency. Some corporate proxies (e.g. Zscaler in certain configurations) block <code>HTTP/2</code>. To fix this, you can set <code>'cursor.general.disableHttp2': true</code> in the VS Code settings (<code>Ctrl</code> + <code>,</code> and then search for <code>http2</code>)."],
+        "answer_steps": ["<code>Cursor Tab</code> and <code>Ctrl</code> + <code>K</code> use <code>HTTP/2</code> by default, which allows Cursor to use less resources with lower latency.",
+        "Some corporate proxies (e.g. Zscaler in certain configurations) block <code>HTTP/2</code>.",
+        "To fix this, you can set <code>cursor.general.disableHttp2: true</code> in the VS Code settings (<code>Ctrl</code> + <code>,</code> and then search for <code>http2</code>)."],
         "related_links": ["https://docs.cursor.com/tab/overview"],
         "status": "Answered",
         "last_updated": "2024-10-01"
       },
       {
-        "id": "b7e8c1b2-4f5e-4c8e-9b8b-3a4b5c6d7e8f", 
+        "id": "r8s9t0u1-v2w3-x4y5-z6a7-b8c9d0e1f2g8", 
         "interface": "Cursor Settings",
         "category": "Error or Bug",
         "glossary_category": "Not Applicable",
@@ -285,7 +285,7 @@
         "last_updated": "2024-10-01"
       },
       {
-        "id": "d1e2f3g4-h5i6-j7k8-l9m0-n1o2p3q4r5s6",
+        "id": "s9t0u1v2-w3x4-y5z6-a7b8-c9d0e1f2g3h9",
         "interface": "Not Applicable",
         "category": "Information - Product",
         "glossary_category": "Not Applicable",
@@ -298,7 +298,7 @@
         "last_updated": "2024-10-01"
       },
       {
-        "id": "f8e1c2d3-4b5e-6f7a-8b9c-0d1e2f3g4h7", 
+        "id": "t0u1v2w3-x4y5-z6a7-b8c9-d0e1f2g3h4i0", 
         "interface": "Not Applicable",
         "category": "Information - Accounts",
         "glossary_category": "Not Applicable",
@@ -311,7 +311,7 @@
         "last_updated": "2024-10-01"
       },
       {
-        "id": "a1b2c3d4-e5f6-7g8h-9i0j-k1l2m3n4o5p7",
+        "id": "u1v2w3x4-y5z6-a7b8-c9d0-e1f2g3h4i5j1",
         "interface": "Not Applicable",
         "category": "Information - Product",
         "glossary_category": "Not Applicable",
@@ -323,7 +323,7 @@
         "last_updated": "2024-10-01"
       },
       {
-        "id": "f8e1c2d3-4b5e-6f7a-8b9c-0d1e2f3g4h8", 
+        "id": "v2w3x4y5-z6a7-b8c9-d0e1-f2g3h4i5j6k2", 
         "interface": "Not Applicable",
         "category": "Information - Product",
         "glossary_category": "Not Applicable",
@@ -331,6 +331,19 @@
         "question": "Where can I view the Cursor Security policy?",
         "answer_steps": ["You can view the Cursor Security policy at <a href='https://www.cursor.com/security' target='_blank'>https://www.cursor.com/security</a>."],
         "related_links": ["https://www.cursor.com/security"],
+        "status": "Answered",
+        "last_updated": "2024-10-01"
+      },
+      {
+        "id": "w3x4y5z6-a7b8-c9d0-e1f2-g3h4i5j6k7l3",
+        "interface": "Cursor Tab",
+        "category": "Glossary",
+        "glossary_category": "Cursor Tab",
+        "glossary_term": "Cursor Tab",
+        "question": "What is Cursor Tab?",
+        "answer_steps": ["Cursor Tab is Cursor's native autocomplete feature.",
+        "It’s a more powerful Copilot that suggests entire diffs with especially good memory."],
+        "related_links": ["https://docs.cursor.com/tab/overview"],
         "status": "Answered",
         "last_updated": "2024-10-01"
       }
