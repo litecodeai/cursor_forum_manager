@@ -247,6 +247,30 @@
         "related_links": ["https://docs.cursor.com/troubleshooting/common-issues#i-see-an-update-on-the-changelog-but-cursor-wont-update"],
         "status": "Answered",
         "last_updated": "2024-10-01"
+      },
+      {
+        "id": "f8e1c2d3-4b5e-6f7a-8b9c-0d1e2f3g4h5i",
+        "interface": "Not Applicable",
+        "category": "Information - Product",
+        "glossary_category": "Not Applicable",
+        "glossary_term": "Not Applicable",
+        "question": "Does Cursor support GitHub Codespaces?",
+        "answer_steps": ["Cursor does not support GitHub Codespaces yet."],
+        "related_links": ["https://github.com/features/codespaces"],
+        "status": "Answered",
+        "last_updated": "2024-10-01"
+      },
+      {
+        "id": "f8e1c2d3-4b5e-6f7a-8b9c-0d1e2f3g4h6", 
+        "interface": "Not Applicable",
+        "category": "Information - Product",
+        "glossary_category": "Not Applicable",
+        "glossary_term": "Not Applicable",
+        "question": "Does Cursor support the 'Remote - SSH' extension?",
+        "answer_steps": ["Cursor supports the use of the 'Remote - SSH' extension on Linux and Mac, but not on Windows yet."],
+        "related_links": ["https://code.visualstudio.com/docs/remote/ssh"],
+        "status": "Answered",
+        "last_updated": "2024-10-01"
       }
     ]
   }
