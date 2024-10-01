@@ -4729,7 +4729,7 @@
       "id": "g7h8i9j0-k1l2-m3n4-o5p6-q7r8s9t0u1v7",
       "interface": "Not Applicable",
       "category": "Glossary",
-      "glossary_category": "Information - Service",
+      "glossary_category": "Information - Product",
       "glossary_term": "Cursor",
       "question": "What is Cursor?",
       "answer_steps": [
@@ -5518,7 +5518,7 @@
     {
       "id": "h8i9j0k1-l2m3-n4o5-p6q7-r8s9t0u1v2w8",
       "interface": "Not Applicable",
-      "category": "Information - Service",
+      "category": "Information - Product",
       "glossary_category": "Not Applicable",
       "glossary_term": "Not Applicable",
       "question": "Where is the Cursor Changelog?",
