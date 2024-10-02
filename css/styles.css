@@ -206,7 +206,8 @@ input#question-search {
 }
 
 #clear-question-search-icon,
-#clear-glossary-term-search-icon {
+#clear-glossary-term-search-icon,
+#clear-embedding-search-icon {
     position: absolute;
     right: 15px;
     top: 11px;

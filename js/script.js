@@ -725,6 +725,7 @@ $(document).on('click', '.question-list-item', (event) => {
     'background-color': '#c1ffc1',
     'color': '#000'
   }).val(search_term);
+  $query_input.trigger('input');
   $('#button_query_qa').click();
 
   // reset transition before applying it again
@@ -749,7 +750,7 @@ $(document).on('click', '.question-list-item', (event) => {
           history.pushState(null, '', new_url);
           // clear answer container and query input
           $('#answer-container').empty();
-          $('#query-input').val('');
+          $('#query-input').val('').trigger('input');
           $('#qa_answers_result_count').html('&nbsp;');
           // clear question search and glossary term search
           // need to trigger input event to clear the search icon 
@@ -1164,6 +1165,19 @@ $(document).on('input', '#question-search', function() {
 });
 
 
+$(document).on('input', '#query-input', function() {
+  const filter_text = $(this).val();
+
+  // show/hide the clear icon based on input length
+  if (filter_text.length > 0) {
+      $('#clear-embedding-search-icon').show();
+  } else {
+      $('#clear-embedding-search-icon').hide();
+  }
+
+});
+
+
 // add event handler to clear the input field when the icon is clicked
 $(document).on('click', '#clear-question-search-icon', function() {
   $('#question-search').val('').trigger('input');
@@ -1172,5 +1186,15 @@ $(document).on('click', '#clear-question-search-icon', function() {
 // add event handler to clear the input field when the icon is clicked
 $(document).on('click', '#clear-glossary-term-search-icon', function() {
   $('#glossary-term-filter-input').val('').trigger('input');
+});
+
+// add event handler to clear the input field when the icon is clicked
+$(document).on('click', '#clear-embedding-search-icon', function() {
+
+    // clear answer container and query input
+    $('#answer-container').empty();
+    $('#query-input').val('').trigger('input');
+    $('#qa_answers_result_count').html('&nbsp;');
+
 });
 

@@ -106,6 +106,22 @@
         "last_updated": "2024-09-25"
       },
       {
+        "id": "j0k1l2m3-n4o5-p6q7-r8s9-t0u1v2w3x4y0",
+        "interface": "Ctrl + K",
+        "category": "Glossary",
+        "glossary_category": "Ctrl + K",
+        "glossary_term": "Ctrl + K",
+        "question": "What is <code>Ctrl</code> + <code>K</code>?",
+        "answer_steps": [
+            "<code>Ctrl</code> + <code>K</code> is the keyboard shortcut that opens the AI assistant within the Editor."
+        ],
+        "related_links": [
+            "https://docs.cursor.com/cmdk/overview"
+        ],
+        "status": "Answered",
+        "last_updated": "2024-10-02"
+      },
+      {
         "id": "g7h8i9j0-k1l2-m3n4-o5p6-q7r8s9t0u1v7",
         "interface": "Not Applicable",
         "category": "Glossary",
@@ -369,6 +385,102 @@
         "answer_steps": ["Pending answer."],
         "related_links": ["https://docs.cursor.com"],
         "status": "Unanswered",
+        "last_updated": "2024-10-02"
+      },
+      {
+        "id": "b9c0d1e2-f3g4-h5i6-j7k8-l9m0n1o2p3q4",
+        "interface": "Not Applicable",
+        "category": "User Interface Tip",
+        "glossary_category": "Not Applicable",
+        "glossary_term": "Not Applicable",
+        "question": "How do I open Cursor settings?",
+        "answer_steps": ["To open Cursor settings, press <code>Ctrl</code> + <code>Shift</code> + <code>J</code>."],
+        "related_links": ["https://docs.cursor.com"],
+        "status": "Answered",
+        "last_updated": "2024-10-02"
+      },
+      {
+        "id": "c1d2e3f4-g5h6-i7j8-k9l0-m1n2o3p4q5r6",
+        "interface": "Not Applicable",
+        "category": "User Interface Tip",
+        "glossary_category": "Not Applicable",
+        "glossary_term": "Not Applicable",
+        "question": "How do I open VS Code settings?",
+        "answer_steps": ["To open VS Code settings, press <code>Ctrl</code> + <code>,</code>."],
+        "related_links": ["https://docs.cursor.com"],
+        "status": "Answered",
+        "last_updated": "2024-10-02"
+      },
+      {
+        "id": "z6a7b8c9-d0e1-f2g3-h4i5-j6k7l8m9n0o1",
+        "interface": "Not Applicable",
+        "category": "User Interface Tip",
+        "glossary_category": "Not Applicable",
+        "glossary_term": "Not Applicable",
+        "question": "How do I view keyboard shortcuts in Cursor?",
+        "answer_steps": ["To view keyboard shortcuts in Cursor, go to <code>File</code> > <code>Preferences</code> > <code>Keyboard Shortcuts</code>."],
+        "related_links": ["https://docs.cursor.com"],
+        "status": "Answered",
+        "last_updated": "2024-10-02"
+      },
+      {
+        "id": "a1b2c3d4-e5f6-g7h8-i9j0-k1l2m3n4o5p6",
+        "interface": "Not Applicable",
+        "category": "User Interface Tip",
+        "glossary_category": "Not Applicable",
+        "glossary_term": "Not Applicable",
+        "question": "How do I open the Command Palette in Cursor?",
+        "answer_steps": ["To open the Command Palette in Cursor, press <code>Ctrl</code> + <code>Shift</code> + <code>P</code>."],
+        "related_links": ["https://docs.cursor.com"],
+        "status": "Answered",
+        "last_updated": "2024-10-02"
+      },
+      {
+        "id": "d7e8f9g0-h1i2-j3k4-l5m6-n7o8p9q0r1s2",
+        "interface": "Not Applicable",
+        "category": "Glossary",
+        "glossary_category": "AI Terminology",
+        "glossary_term": "Large Language Model (LLM)",
+        "question": "What is a Large Language Model (LLM)?",
+        "answer_steps": ["A Large Language Model (LLM) is a type of AI model that uses deep learning to understand and generate natural language."],
+        "related_links": ["https://en.wikipedia.org/wiki/Large_language_model"],
+        "status": "Answered",
+        "last_updated": "2024-10-02"
+      },
+      {
+        "id": "e1f2g3h4-i5j6-k7l8-m9n0-o1p2q3r4s5t6",
+        "interface": "Not Applicable",
+        "category": "Glossary",
+        "glossary_category": "AI Terminology",
+        "glossary_term": "Deep Learning",
+        "question": "What is Deep Learning?",
+        "answer_steps": ["Deep learning is a subset of machine learning that uses neural networks with many layers to analyze various factors of data."],
+        "related_links": ["https://en.wikipedia.org/wiki/Deep_learning"],
+        "status": "Answered",
+        "last_updated": "2024-10-02"
+      },
+      {
+        "id": "f1g2h3i4-j5k6-l7m8-n9o0-p1q2r3s4t5u6",
+        "interface": "Not Applicable",
+        "category": "Glossary",
+        "glossary_category": "AI Terminology",
+        "glossary_term": "Neural Network",
+        "question": "What is a Neural Network?",
+        "answer_steps": ["A neural network is a type of machine learning model that is inspired by the structure and function of the human brain."],
+        "related_links": ["https://en.wikipedia.org/wiki/Artificial_neural_network"],
+        "status": "Answered",
+        "last_updated": "2024-10-02"
+      },
+      {
+        "id": "g1h2i3j4-k5l6-m7n8-o9p0-q1r2s3t4u5v6",
+        "interface": "Not Applicable",
+        "category": "Glossary",
+        "glossary_category": "AI Terminology",
+        "glossary_term": "Machine Learning",
+        "question": "What is Machine Learning?",
+        "answer_steps": ["Machine learning is a type of AI that allows machines to learn from data and improve their performance without being explicitly programmed."],
+        "related_links": ["https://en.wikipedia.org/wiki/Machine_learning"],
+        "status": "Answered",
         "last_updated": "2024-10-02"
       }
     ]
